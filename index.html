@@ -143,7 +143,6 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
 .analog-mini .center-dot { position: absolute; width: 4px; height: 4px; background: #ffd700; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 6px #ffd700; }
 .clock-item-left { display: flex; align-items: center; gap: 8px; }
 
-/* QIBLA - PERBAIKAN: hapus transform: rotate(0deg) dari CSS */
 .qibla-section { background: linear-gradient(145deg, #0a1a14, #14301f); border-radius: 32px; padding: 24px 20px 22px; border: 1.5px solid #ffc107; box-shadow: 0 12px 40px rgba(255, 193, 7, 0.15), inset 0 1px 0 rgba(255, 215, 0, 0.15); position: relative; overflow: hidden; animation: borderPulse 5s infinite; }
 .qibla-section::before { content: ''; position: absolute; top: -60%; left: -60%; width: 200%; height: 200%; background: radial-gradient(circle at 70% 60%, rgba(255, 215, 0, 0.06) 0%, transparent 60%); pointer-events: none; animation: floatSoft 14s ease-in-out infinite; }
 .qibla-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; position: relative; z-index: 1; flex-wrap: wrap; gap: 10px; }
@@ -162,8 +161,8 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
 .compass-mark.w { left: 10px; top: 50%; transform: translateY(-50%); }
 .compass-center { position: absolute; width: 16px; height: 16px; background: radial-gradient(circle at 30% 30%, #ffeaa7, #ffc107); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 20px #ffc107, 0 0 40px rgba(255, 215, 0, 0.5); z-index: 5; border: 2px solid #fff8e1; }
 
-/* PERBAIKAN: transition disederhanakan, tidak pakai rotate(0deg) */
-.qibla-needle { position: absolute; top: 50%; left: 50%; width: 4px; height: 90px; margin-left: -2px; margin-top: -90px; transform-origin: 50% 100%; z-index: 4; pointer-events: none; will-change: transform; transition: transform 0.6s ease-out; }
+/* ANIMASI JARUM DIUBAH SUPAYA LEBIH SMOOTH */
+.qibla-needle { position: absolute; top: 50%; left: 50%; width: 4px; height: 90px; margin-left: -2px; margin-top: -90px; transform-origin: 50% 100%; z-index: 4; pointer-events: none; will-change: transform; transition: transform 0.2s linear; }
 .qibla-needle .needle-line { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 3px; height: 100%; background: linear-gradient(to top, #ffc107 0%, #fff8e1 50%, #ffc107 100%); border-radius: 3px; box-shadow: 0 0 12px #ffc107, 0 0 24px rgba(255, 215, 0, 0.6); }
 .qibla-needle .needle-arrow { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 26px; filter: drop-shadow(0 0 8px #ffc107) drop-shadow(0 0 16px rgba(255, 215, 0, 0.8)); line-height: 1; }
 .qibla-needle .needle-tail { position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 12px solid #b8860b; filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4)); }
@@ -175,8 +174,7 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
 .qibla-stat { background: rgba(0, 0, 0, 0.4); padding: 8px 16px; border-radius: 30px; border: 1px solid rgba(255, 215, 0, 0.2); font-size: 0.8rem; color: #ffecb3; display: flex; align-items: center; gap: 6px; }
 .qibla-stat strong { color: #ffd700; font-family: 'Courier New', monospace; font-size: 0.9rem; }
 .qibla-btn { background: linear-gradient(135deg, #b8860b, #daa520); border: none; color: #1f1408; font-weight: 800; font-size: 0.85rem; padding: 10px 22px; border-radius: 40px; cursor: pointer; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
-.qibla-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4); background: linear-gradient(135deg, #daa520, #ffd700); }
-.qibla-btn:active { transform: translateY(1px); box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4); }
+.qibla-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6); }
 .qibla-btn:disabled { opacity: 0.6; cursor: wait; }
 .qibla-note { text-align: center; color: rgba(255, 236, 179, 0.35); font-size: 0.65rem; letter-spacing: 1.5px; margin-top: 18px; text-transform: uppercase; position: relative; z-index: 1; }
 
@@ -276,7 +274,6 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
 .menu-btn.level { font-size:24px; padding:14px 30px; background:#3f5f6f; min-width: 140px; }
 .level-selector { margin-top:30px; display:flex; gap:20px; justify-content:center; flex-wrap: wrap; }
 
-/* SPACE RUNNER - layout lebih responsif */
 .space-runner-wrapper { width: 100%; min-height: 100%; display: flex; justify-content: center; align-items: flex-start; padding: 10px; box-sizing: border-box; }
 .sr-panel { background: linear-gradient(145deg, #1e2335, #141827); border-radius: 20px; padding: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); border: 1px solid rgba(0,255,255,0.3); max-width: 100%; width: 100%; max-width: 960px; }
 .sr-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; background: rgba(0,0,0,0.3); padding: 8px 15px; border-radius: 40px; border: 1px solid rgba(0,255,255,0.3); flex-wrap: wrap; gap: 8px; }
@@ -497,9 +494,10 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
                             <div class="qibla-stat">📍 <strong id="qiblaLat">-6.557</strong>, <strong id="qiblaLon">107.443</strong></div>
                         </div>
                         <button id="btnLocate" class="qibla-btn">🔄 Deteksi Ulang</button>
+                        <button id="btnCompass" class="qibla-btn" style="margin-top: 10px; background: #4ade80; color: #000;">🧭 Aktifkan Kompas HP</button>
                     </div>
                 </div>
-                <div class="qibla-note">📿 gunakan kompas ini saat berada di tempat terbuka untuk hasil lebih akurat</div>
+                <div class="qibla-note">📿 Pastikan web dibuka lewat HTTPS dan izinkan akses sensor untuk fitur kompas real-time</div>
             </div>
 
             <div class="blog-section">
@@ -562,10 +560,7 @@ Penulis: Tim Jurnalistik Assyifa Boarding School</div>
 (function() {
 'use strict';
 
-// ===== GLOBAL ERROR HANDLER =====
-window.addEventListener('error', function(e) {
-    console.error('JS ERROR:', e.message, 'line', e.lineno);
-});
+window.addEventListener('error', function(e) { console.error('JS ERROR:', e.message, 'line', e.lineno); });
 
 // ===== LOADING =====
 var loadingScreen = document.getElementById('loading-screen');
@@ -637,9 +632,22 @@ function updateWorldClock() {
 setInterval(updateWorldClock, 1000);
 updateWorldClock();
 
-// ===== QIBLA =====
+// ===== QIBLA SENSOR =====
 var KAABA_LAT = 21.4225, KAABA_LON = 39.8262;
 var DEFAULT_LAT = -6.5569, DEFAULT_LON = 107.4433;
+var qiblaNeedle = document.getElementById('qiblaNeedle');
+var qiblaDegEl = document.getElementById('qiblaDeg');
+var qiblaDistEl = document.getElementById('qiblaDist');
+var qiblaLatEl = document.getElementById('qiblaLat');
+var qiblaLonEl = document.getElementById('qiblaLon');
+var locationBadge = document.getElementById('locationBadge');
+var btnLocate = document.getElementById('btnLocate');
+var btnCompass = document.getElementById('btnCompass');
+
+var currentQiblaBearing = 0;
+var currentDeviceHeading = 0;
+var sensorActive = false;
+
 function toRad(d) { return d * Math.PI / 180; }
 function toDeg(r) { return r * 180 / Math.PI; }
 
@@ -652,6 +660,73 @@ function calculateQiblaBearing(lat, lon) {
     if (b < 0) b += 360;
     return b;
 }
+
+function updateNeedleRotation() {
+    if (!qiblaNeedle) return;
+    var needleAngle = currentQiblaBearing - currentDeviceHeading;
+    qiblaNeedle.style.transform = 'rotate(' + needleAngle + 'deg)';
+}
+
+function handleOrientation(event) {
+    if (!sensorActive) return;
+    var heading = 0;
+    if (event.webkitCompassHeading) { heading = event.webkitCompassHeading; }
+    else if (event.alpha !== null) { heading = 360 - event.alpha; }
+    else { return; }
+    currentDeviceHeading = heading;
+    if (locationBadge) {
+        locationBadge.textContent = '🧭 Kompas Aktif: ' + Math.round(heading) + '°';
+        locationBadge.style.borderColor = '#4ade80';
+    }
+    updateNeedleRotation();
+}
+
+function enableCompass() {
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+        DeviceOrientationEvent.requestPermission().then(function(permissionState) {
+            if (permissionState === 'granted') {
+                window.addEventListener('deviceorientation', handleOrientation, true);
+                sensorActive = true;
+                alert('Kompas aktif! Putar HP kamu.');
+            } else {
+                alert('Izin sensor ditolak.');
+            }
+        }).catch(function(err) { alert('Error sensor: ' + err); });
+    } else {
+        window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+        window.addEventListener('deviceorientation', handleOrientation, true);
+        sensorActive = true;
+        setTimeout(function() {
+            if (currentDeviceHeading === 0) alert('Sensor tidak terdeteksi. Pastikan pakai HTTPS dan HP punya kompas.');
+            else alert('Kompas aktif! Putar HP kamu.');
+        }, 1000);
+    }
+}
+if (btnCompass) btnCompass.addEventListener('click', enableCompass);
+
+function updateQibla(lat, lon, source) {
+    try {
+        var bearing = calculateQiblaBearing(lat, lon);
+        var dist = haversine(lat, lon, KAABA_LAT, KAABA_LON);
+        currentQiblaBearing = bearing;
+        
+        if (qiblaDegEl) qiblaDegEl.innerHTML = bearing.toFixed(1) + '<span>°</span>';
+        if (qiblaDistEl) qiblaDistEl.textContent = Math.round(dist).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        if (qiblaLatEl) qiblaLatEl.textContent = lat.toFixed(3);
+        if (qiblaLonEl) qiblaLonEl.textContent = lon.toFixed(3);
+        updateNeedleRotation();
+
+        if (locationBadge && !sensorActive) {
+            var emoji, label;
+            if (source === 'gps') { emoji = '📍'; label = 'GPS: ' + lat.toFixed(2) + ', ' + lon.toFixed(2); }
+            else if (source === 'ip') { emoji = '🌐'; label = 'IP: ' + lat.toFixed(2) + ', ' + lon.toFixed(2); }
+            else if (source === 'loading') { emoji = '📡'; label = 'Mendeteksi...'; }
+            else { emoji = '🏠'; label = 'Default (Purwakarta)'; }
+            locationBadge.textContent = emoji + ' ' + label;
+        }
+    } catch(err) { console.error('[Qibla] error:', err); }
+}
+
 function haversine(lat1, lon1, lat2, lon2) {
     var R = 6371;
     var dLat = toRad(lat2 - lat1);
@@ -660,127 +735,35 @@ function haversine(lat1, lon1, lat2, lon2) {
     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-var qiblaNeedle = document.getElementById('qiblaNeedle');
-var qiblaDegEl = document.getElementById('qiblaDeg');
-var qiblaDistEl = document.getElementById('qiblaDist');
-var qiblaLatEl = document.getElementById('qiblaLat');
-var qiblaLonEl = document.getElementById('qiblaLon');
-var locationBadge = document.getElementById('locationBadge');
-var btnLocate = document.getElementById('btnLocate');
-
-// PERBAIKAN TOTAL: force reflow + set transform
-function updateQibla(lat, lon, source) {
-    try {
-        var bearing = calculateQiblaBearing(lat, lon);
-        var dist = haversine(lat, lon, KAABA_LAT, KAABA_LON);
-        console.log('[Qibla] bearing:', bearing.toFixed(2), 'dist:', dist.toFixed(0), 'src:', source);
-
-        if (qiblaNeedle) {
-            // Reset transform dulu untuk paksa browser re-render
-            qiblaNeedle.style.transform = 'rotate(0deg)';
-            // Force reflow
-            void qiblaNeedle.offsetWidth;
-            // Set transform baru
-            qiblaNeedle.style.transform = 'rotate(' + bearing + 'deg)';
-            console.log('[Qibla] needle set to:', qiblaNeedle.style.transform);
-        }
-
-        if (qiblaDegEl) qiblaDegEl.innerHTML = bearing.toFixed(1) + '<span>°</span>';
-        if (qiblaDistEl) qiblaDistEl.textContent = Math.round(dist).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-        if (qiblaLatEl) qiblaLatEl.textContent = lat.toFixed(3);
-        if (qiblaLonEl) qiblaLonEl.textContent = lon.toFixed(3);
-        if (locationBadge) {
-            var emoji, label;
-            if (source === 'gps') { emoji = '📍'; label = 'GPS: ' + lat.toFixed(2) + ', ' + lon.toFixed(2); }
-            else if (source === 'ip') { emoji = '🌐'; label = 'IP: ' + lat.toFixed(2) + ', ' + lon.toFixed(2); }
-            else if (source === 'loading') { emoji = '📡'; label = 'Mendeteksi...'; }
-            else { emoji = '🏠'; label = 'Default (Purwakarta)'; }
-            locationBadge.textContent = emoji + ' ' + label;
-        }
-        if (btnLocate) btnLocate.disabled = false;
-    } catch(err) { console.error('[Qibla] error:', err); }
-}
-
-var QIBLA_CACHE_KEY = 'figo_qibla_location_v1';
-var QIBLA_CACHE_TTL = 1000 * 60 * 60 * 24;
-var lastQiblaLat = DEFAULT_LAT, lastQiblaLon = DEFAULT_LON, lastQiblaSource = 'default';
-
-function saveLocationCache(lat, lon, src) {
-    try { localStorage.setItem(QIBLA_CACHE_KEY, JSON.stringify({ lat: lat, lon: lon, source: src, ts: Date.now() })); } catch(_) {}
-}
-function loadLocationCache() {
-    try {
-        var raw = localStorage.getItem(QIBLA_CACHE_KEY);
-        if (!raw) return null;
-        var d = JSON.parse(raw);
-        if (Date.now() - d.ts > QIBLA_CACHE_TTL) return null;
-        return d;
-    } catch(_) { return null; }
-}
 function getLocationByIP() {
-    return fetch('https://ipapi.co/json/', { cache: 'no-store' }).then(function(r) {
-        if (!r.ok) throw new Error('ipapi fail');
-        return r.json();
-    }).then(function(d) {
-        if (d && typeof d.latitude === 'number' && typeof d.longitude === 'number') {
-            return { lat: d.latitude, lon: d.longitude };
-        }
-        return null;
-    }).catch(function() {
-        return fetch('https://ipwho.is/', { cache: 'no-store' }).then(function(r) { return r.json(); }).then(function(d) {
-            if (d && d.success && typeof d.latitude === 'number' && typeof d.longitude === 'number') {
-                return { lat: d.latitude, lon: d.longitude };
-            }
-            return null;
-        }).catch(function() { return null; });
-    });
+    return fetch('https://ipapi.co/json/', { cache: 'no-store' }).then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(d) { if (d && typeof d.latitude === 'number') return { lat: d.latitude, lon: d.longitude }; return null; })
+    .catch(function() { return null; });
 }
+
 function detectLocation(forceRefresh) {
     if (btnLocate) btnLocate.disabled = true;
-    if (locationBadge) locationBadge.textContent = '📡 Mendeteksi lokasi...';
-
     if (!forceRefresh) {
         var cached = loadLocationCache();
-        if (cached) {
-            lastQiblaLat = cached.lat; lastQiblaLon = cached.lon; lastQiblaSource = cached.source;
-            updateQibla(cached.lat, cached.lon, cached.source);
-            return;
-        }
+        if (cached) { updateQibla(cached.lat, cached.lon, cached.source); return; }
     }
-
     if (navigator.geolocation) {
-        var done = false;
-        var to = setTimeout(function() { if (!done) { done = true; continueIP(); } }, 6000);
-        try {
-            navigator.geolocation.getCurrentPosition(
-                function(pos) {
-                    if (done) return; done = true; clearTimeout(to);
-                    lastQiblaLat = pos.coords.latitude; lastQiblaLon = pos.coords.longitude; lastQiblaSource = 'gps';
-                    updateQibla(pos.coords.latitude, pos.coords.longitude, 'gps');
-                    saveLocationCache(pos.coords.latitude, pos.coords.longitude, 'gps');
-                },
-                function() { if (done) return; done = true; clearTimeout(to); continueIP(); },
-                { enableHighAccuracy: true, timeout: 5500, maximumAge: 60000 }
-            );
-        } catch(e) { if (!done) { done = true; clearTimeout(to); continueIP(); } }
-    } else {
-        continueIP();
-    }
-
-    function continueIP() {
-        getLocationByIP().then(function(ip) {
-            if (ip) {
-                lastQiblaLat = ip.lat; lastQiblaLon = ip.lon; lastQiblaSource = 'ip';
-                updateQibla(ip.lat, ip.lon, 'ip');
-                saveLocationCache(ip.lat, ip.lon, 'ip');
-            } else {
-                lastQiblaLat = DEFAULT_LAT; lastQiblaLon = DEFAULT_LON; lastQiblaSource = 'default';
-                updateQibla(DEFAULT_LAT, DEFAULT_LON, 'default');
-                saveLocationCache(DEFAULT_LAT, DEFAULT_LON, 'default');
-            }
-        });
-    }
+        navigator.geolocation.getCurrentPosition(
+            function(pos) { updateQibla(pos.coords.latitude, pos.coords.longitude, 'gps'); saveLocationCache(pos.coords.latitude, pos.coords.longitude, 'gps'); },
+            function() { 
+                getLocationByIP().then(function(ip) {
+                    if (ip) { updateQibla(ip.lat, ip.lon, 'ip'); saveLocationCache(ip.lat, ip.lon, 'ip'); }
+                    else { updateQibla(DEFAULT_LAT, DEFAULT_LON, 'default'); }
+                });
+            },
+            { enableHighAccuracy: true, timeout: 6000 }
+        );
+    } else { updateQibla(DEFAULT_LAT, DEFAULT_LON, 'default'); }
 }
+
+function saveLocationCache(lat, lon, src) { try { localStorage.setItem('qibla_c', JSON.stringify({ lat: lat, lon: lon, source: src, ts: Date.now() })); } catch(_) {} }
+function loadLocationCache() { try { var raw = localStorage.getItem('qibla_c'); if (!raw) return null; var d = JSON.parse(raw); if (Date.now() - d.ts > 86400000) return null; return d; } catch(_) { return null; } }
+
 updateQibla(DEFAULT_LAT, DEFAULT_LON, 'loading');
 detectLocation(false);
 if (btnLocate) btnLocate.addEventListener('click', function() { detectLocation(true); });
@@ -805,10 +788,8 @@ if (btnLocate) btnLocate.addEventListener('click', function() { detectLocation(t
             if (p.y<0||p.y>h) p.vy*=-1;
             p.x = Math.max(0, Math.min(w, p.x));
             p.y = Math.max(0, Math.min(h, p.y));
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, 2*Math.PI);
-            ctx.fillStyle = p.color;
-            ctx.fill();
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, 2*Math.PI);
+            ctx.fillStyle = p.color; ctx.fill();
         });
         requestAnimationFrame(draw);
     }
@@ -835,13 +816,6 @@ function setActiveTab(active) {
         pageInfo.classList.remove('hidden');
         if (tabInfo) tabInfo.classList.add('active');
         updateWorldClock();
-        // PERBAIKAN: re-apply qibla setelah tab terlihat (force reflow)
-        setTimeout(function() {
-            updateQibla(lastQiblaLat, lastQiblaLon, lastQiblaSource);
-        }, 100);
-        setTimeout(function() {
-            updateQibla(lastQiblaLat, lastQiblaLon, lastQiblaSource);
-        }, 500);
     } else if (active === 'game' && pageGame) {
         pageGame.classList.remove('hidden');
         if (tabGame) tabGame.classList.add('active');
@@ -866,46 +840,23 @@ if (blogImage) blogImage.addEventListener('change', function() {
 if (addBlogBtn) addBlogBtn.addEventListener('click', function() {
     var title = blogTitle.value.trim();
     var content = blogContent.value.trim();
-    if (!title || !content) { alert('Judul dan isi artikel harus diisi!'); return; }
-
+    if (!title || !content) { alert('Judul dan isi harus diisi!'); return; }
     var postDiv = document.createElement('div');
     postDiv.className = 'blog-post';
-
-    var h4 = document.createElement('h4');
-    h4.textContent = title;
-    postDiv.appendChild(h4);
-
-    var meta = document.createElement('div');
-    meta.className = 'post-meta';
+    var h4 = document.createElement('h4'); h4.textContent = title; postDiv.appendChild(h4);
+    var meta = document.createElement('div'); meta.className = 'post-meta';
     var now = new Date();
     meta.textContent = '📅 ' + now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' }) + ' · ' + now.toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit' });
     postDiv.appendChild(meta);
-
     if (blogImage.files && blogImage.files[0]) {
-        var img = document.createElement('img');
-        img.src = URL.createObjectURL(blogImage.files[0]);
-        img.alt = title;
-        postDiv.appendChild(img);
+        var img = document.createElement('img'); img.src = URL.createObjectURL(blogImage.files[0]); img.alt = title; postDiv.appendChild(img);
     }
-
-    var p = document.createElement('div');
-    p.className = 'post-content';
-    p.textContent = content;
-    postDiv.appendChild(p);
-
-    var delBtn = document.createElement('button');
-    delBtn.className = 'delete-post';
-    delBtn.textContent = '🗑️ Hapus';
-    delBtn.addEventListener('click', function() {
-        if (confirm('Yakin ingin menghapus artikel ini?')) postDiv.remove();
-    });
+    var p = document.createElement('div'); p.className = 'post-content'; p.textContent = content; postDiv.appendChild(p);
+    var delBtn = document.createElement('button'); delBtn.className = 'delete-post'; delBtn.textContent = '🗑️ Hapus';
+    delBtn.addEventListener('click', function() { if (confirm('Hapus artikel ini?')) postDiv.remove(); });
     postDiv.appendChild(delBtn);
-
     blogPostsContainer.prepend(postDiv);
-    blogTitle.value = '';
-    blogImage.value = '';
-    blogContent.value = '';
-    if (fileLabel) fileLabel.textContent = 'Belum ada file';
+    blogTitle.value = ''; blogImage.value = ''; blogContent.value = ''; if (fileLabel) fileLabel.textContent = 'Belum ada file';
 });
 
 // ===== FULLSCREEN GAME =====
@@ -921,52 +872,26 @@ var gameLoadingInterval = null;
 var currentGameCleanup = null;
 
 function cleanupCurrentGame() {
-    if (currentGameCleanup) {
-        try { currentGameCleanup(); } catch(e) { console.warn(e); }
-        currentGameCleanup = null;
-    }
+    if (currentGameCleanup) { try { currentGameCleanup(); } catch(e) {} currentGameCleanup = null; }
 }
 
 function showSunLoading(gameType) {
     cleanupCurrentGame();
     if (!gameFullscreen || !gameFullscreenContent) return;
     gameFullscreenContent.innerHTML = '';
-
-    var sunHTML = '<div class="particles" id="sunParticles"></div>' +
-        '<div class="glow-effect"></div><div class="shine-effect"></div>' +
-        '<div class="loading-container">' +
-        '<div class="sun"><div class="sun-core"></div><div class="sun-ray"></div></div>' +
-        '<div class="loading-text">Loading ' + (gameType === 'voli' ? 'VollyPro' : gameType === 'space' ? 'SpaceRunner' : gameType === 'tebakangka' ? 'Tebak Angka' : 'CanvasPaint') + '</div>' +
-        '<div class="loader"><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div></div>' +
-        '<div class="progress-bar"><div class="progress-fill" id="sunProgressFill"></div></div>' +
-        '<div class="percentage" id="sunPercentage">0%</div></div>';
-
     var sunLoading = document.createElement('div');
     sunLoading.className = 'loading-screen';
-    sunLoading.innerHTML = sunHTML;
+    sunLoading.innerHTML = '<div class="particles" id="sunParticles"></div><div class="glow-effect"></div><div class="shine-effect"></div><div class="loading-container"><div class="sun"><div class="sun-core"></div><div class="sun-ray"></div></div><div class="loading-text">Loading ' + (gameType === 'voli' ? 'VollyPro' : gameType === 'space' ? 'SpaceRunner' : gameType === 'tebakangka' ? 'Tebak Angka' : 'CanvasPaint') + '</div><div class="loader"><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div></div><div class="progress-bar"><div class="progress-fill" id="sunProgressFill"></div></div><div class="percentage" id="sunPercentage">0%</div></div>';
     gameFullscreenContent.appendChild(sunLoading);
-
-    var particlesDiv = document.getElementById('sunParticles');
-    if (particlesDiv) for (var i = 0; i < 20; i++) {
-        var p = document.createElement('div');
-        p.className = 'particle';
-        p.style.left = Math.random() * 100 + '%';
-        p.style.top = Math.random() * 100 + '%';
-        p.style.animationDelay = Math.random() * 5 + 's';
-        p.style.width = Math.random() * 15 + 5 + 'px';
-        p.style.height = p.style.width;
-        particlesDiv.appendChild(p);
-    }
-
     var percent = 0;
     if (gameLoadingInterval) clearInterval(gameLoadingInterval);
     gameLoadingInterval = setInterval(function() {
-        percent = (percent + 2) % 102;
+        percent = (percent + 3) % 103;
         if (percent > 100) percent = 100;
-        var percentEl = document.getElementById('sunPercentage');
-        var progressFill = document.getElementById('sunProgressFill');
-        if (percentEl) percentEl.textContent = percent + '%';
-        if (progressFill) progressFill.style.width = percent + '%';
+        var pEl = document.getElementById('sunPercentage');
+        var fEl = document.getElementById('sunProgressFill');
+        if (pEl) pEl.textContent = percent + '%';
+        if (fEl) fEl.style.width = percent + '%';
         if (percent >= 100) {
             clearInterval(gameLoadingInterval);
             gameLoadingInterval = null;
@@ -977,514 +902,192 @@ function showSunLoading(gameType) {
                     else if (gameType === 'space') startSpaceGameNow();
                     else if (gameType === 'tebakangka') startTebakAngkaNow();
                     else if (gameType === 'canvaspaint') startCanvasPaintNow();
-                } catch (err) {
-                    console.error('Game start error:', gameType, err);
-                    gameFullscreenContent.innerHTML = '<div style="color:white;text-align:center;padding:40px;font-family:sans-serif;"><h2>⚠️ Gagal memuat</h2><p>' + err.message + '</p></div>';
-                }
+                } catch (err) { gameFullscreenContent.innerHTML = '<div style="color:white;text-align:center;padding:40px;">Error: ' + err.message + '</div>'; }
             }, 300);
         }
     }, 25);
-
     gameFullscreen.classList.add('active');
 }
 
 // ===== GAME VOLLYPRO =====
 function startVoliGameNow() {
-    gameFullscreenContent.innerHTML = 
-        '<div class="volley-arena" id="volleyArena">' +
-            '<canvas id="volleyCanvas" width="800" height="500"></canvas>' +
-            '<div class="score-board"><span>🏐 KIRI: <span id="leftScoreEl">0</span></span><span>🔥 KANAN: <span id="rightScoreEl">0</span></span></div>' +
-            '<div class="info-panel"><div class="key-hint" id="keyHint"></div><div class="action-buttons"><button class="action-btn lobby-btn" id="lobbyBtn">🏠 LOBBY</button><button class="action-btn" id="fullscreenBtn">⛶ FULL</button></div></div>' +
-        '</div>' +
-        '<div class="menu-overlay" id="menuOverlay">' +
-            '<div class="menu-card" id="mainMenu"><h1>🏐 VOLLI 2D</h1><div class="menu-buttons"><button class="menu-btn" id="modeBotBtn">VS BOT</button><button class="menu-btn bot" id="modeMabarBtn">VS PLAYER</button></div></div>' +
-            '<div class="menu-card" id="levelMenu" style="display:none;"><h1>🎚️ PILIH LEVEL BOT</h1><div class="level-selector"><button class="menu-btn level" id="levelEasy">MUDAH</button><button class="menu-btn level" id="levelMedium">SEDANG</button><button class="menu-btn level" id="levelHard">SUSAH</button></div></div>' +
-        '</div>';
+    gameFullscreenContent.innerHTML = '<div class="volley-arena" id="volleyArena"><canvas id="volleyCanvas" width="800" height="500"></canvas><div class="score-board"><span>🏐 KIRI: <span id="leftScoreEl">0</span></span><span>🔥 KANAN: <span id="rightScoreEl">0</span></span></div><div class="info-panel"><div class="key-hint" id="keyHint"></div><div class="action-buttons"><button class="action-btn lobby-btn" id="lobbyBtn">🏠 LOBBY</button><button class="action-btn" id="fullscreenBtn">⛶ FULL</button></div></div></div><div class="menu-overlay" id="menuOverlay"><div class="menu-card" id="mainMenu"><h1>🏐 VOLLI 2D</h1><div class="menu-buttons"><button class="menu-btn" id="modeBotBtn">VS BOT</button><button class="menu-btn bot" id="modeMabarBtn">VS PLAYER</button></div></div><div class="menu-card" id="levelMenu" style="display:none;"><h1>🎚️ PILIH LEVEL BOT</h1><div class="level-selector"><button class="menu-btn level" id="levelEasy">MUDAH</button><button class="menu-btn level" id="levelMedium">SEDANG</button><button class="menu-btn level" id="levelHard">SUSAH</button></div></div></div>';
     initVoliGame();
 }
 
 function initVoliGame() {
-    var canvas = document.getElementById('volleyCanvas');
-    if (!canvas) return;
+    var canvas = document.getElementById('volleyCanvas'); if (!canvas) return;
     var ctx = canvas.getContext('2d');
-    var leftScoreEl = document.getElementById('leftScoreEl');
-    var rightScoreEl = document.getElementById('rightScoreEl');
-    var arena = document.getElementById('volleyArena');
-    var menuOverlay = document.getElementById('menuOverlay');
-    var mainMenu = document.getElementById('mainMenu');
-    var levelMenu = document.getElementById('levelMenu');
-    var modeBotBtn = document.getElementById('modeBotBtn');
-    var modeMabarBtn = document.getElementById('modeMabarBtn');
-    var levelEasy = document.getElementById('levelEasy');
-    var levelMedium = document.getElementById('levelMedium');
-    var levelHard = document.getElementById('levelHard');
-    var keyHint = document.getElementById('keyHint');
-    var lobbyBtn = document.getElementById('lobbyBtn');
-    var fullscreenBtn = document.getElementById('fullscreenBtn');
+    var leftScoreEl = document.getElementById('leftScoreEl'), rightScoreEl = document.getElementById('rightScoreEl');
+    var arena = document.getElementById('volleyArena'), menuOverlay = document.getElementById('menuOverlay');
+    var mainMenu = document.getElementById('mainMenu'), levelMenu = document.getElementById('levelMenu');
+    var modeBotBtn = document.getElementById('modeBotBtn'), modeMabarBtn = document.getElementById('modeMabarBtn');
+    var levelEasy = document.getElementById('levelEasy'), levelMedium = document.getElementById('levelMedium'), levelHard = document.getElementById('levelHard');
+    var keyHint = document.getElementById('keyHint'), lobbyBtn = document.getElementById('lobbyBtn'), fullscreenBtn = document.getElementById('fullscreenBtn');
 
     var gameMode = null, botLevel = 'medium', gameStarted = false;
-    var GROUND_Y = 430, NET_X = 400;
-    var NET_BOTTOM = GROUND_Y - 6, NET_TOP = NET_BOTTOM - 96;
+    var GROUND_Y = 430, NET_X = 400, NET_BOTTOM = GROUND_Y - 6, NET_TOP = NET_BOTTOM - 96;
     var leftScore = 0, rightScore = 0;
     var ball = { x: 300, y: 300, vx: 3.5, vy: -3.0, r: 12, gravity: 0.22, friction: 0.992, trail: [] };
-    var BOUNCE_FACTOR = 0.8, NET_BOUNCE = 0.85;
-    var scorePauseTimer = 0, PAUSE_DURATION = 80, waitingForReady = false;
+    var BOUNCE_FACTOR = 0.8, NET_BOUNCE = 0.85, scorePauseTimer = 0, PAUSE_DURATION = 80, waitingForReady = false;
     var playerLeft = { baseY: GROUND_Y-28, y: GROUND_Y-28, x: 150, r: 24, color: '#FFEE22', glow: '#FFFF88', jumpOffset: 0, jumpVy: 0, isJumping: false, leftPressed: false, rightPressed: false, jumpPressed: false, direction: 1 };
     var playerRight = { baseY: GROUND_Y-28, y: GROUND_Y-28, x: 620, r: 24, color: '#FFAA33', glow: '#FFBB66', jumpOffset: 0, jumpVy: 0, isJumping: false, leftPressed: false, rightPressed: false, jumpPressed: false, direction: -1 };
     var PLAYER_LEFT_MIN = 70, PLAYER_LEFT_MAX = 340, PLAYER_RIGHT_MIN = 460, PLAYER_RIGHT_MAX = 730, KEY_SPEED = 9;
     var sparks = [];
 
-    function updateScoreUI() {
-        if (leftScoreEl) leftScoreEl.innerText = leftScore;
-        if (rightScoreEl) rightScoreEl.innerText = rightScore;
-    }
-    function resetBallWithPause() {
-        scorePauseTimer = PAUSE_DURATION;
-        waitingForReady = true;
-        ball.vx = 0; ball.vy = 0; ball.x = 400; ball.y = 300;
-    }
-    function releaseBall() {
-        ball.vx = (Math.random() * 4 + 2.5) * (Math.random() > 0.5 ? 1 : -1);
-        ball.vy = -3.5 - Math.random() * 1.5;
-        waitingForReady = false;
-    }
+    function updateScoreUI() { if(leftScoreEl) leftScoreEl.innerText=leftScore; if(rightScoreEl) rightScoreEl.innerText=rightScore; }
+    function resetBallWithPause() { scorePauseTimer = PAUSE_DURATION; waitingForReady = true; ball.vx=0; ball.vy=0; ball.x=400; ball.y=300; }
+    function releaseBall() { ball.vx = (Math.random() * 4 + 2.5) * (Math.random() > 0.5 ? 1 : -1); ball.vy = -3.5 - Math.random() * 1.5; waitingForReady = false; }
     function jump(p) { if (!p.isJumping) { p.isJumping = true; p.jumpVy = -7.5; } }
-    function updateJump(p) {
-        if (p.isJumping) {
-            p.jumpOffset += p.jumpVy;
-            p.jumpVy += 0.45;
-            if (p.jumpOffset >= 0) { p.jumpOffset = 0; p.isJumping = false; p.jumpVy = 0; }
-        } else p.jumpOffset = 0;
-        p.y = p.baseY + p.jumpOffset;
-    }
+    function updateJump(p) { if(p.isJumping){ p.jumpOffset+=p.jumpVy; p.jumpVy+=0.45; if(p.jumpOffset>=0){p.jumpOffset=0; p.isJumping=false; p.jumpVy=0;} } else p.jumpOffset=0; p.y = p.baseY + p.jumpOffset; }
     function autoHit(attacker, isLeftPlayer) {
         var dx = ball.x - attacker.x, dy = ball.y - attacker.y;
-        var dist = Math.sqrt(dx*dx + dy*dy);
-        var reach = attacker.r + ball.r + 42;
-        if (dist <= reach) {
-            var targetX, targetY;
-            if (isLeftPlayer) {
-                targetX = playerRight.x + (Math.random()*60 - 30);
-                targetY = playerRight.y - 20 + (Math.random()*40 - 20);
-            } else {
-                targetX = playerLeft.x + (Math.random()*60 - 30);
-                targetY = playerLeft.y - 20 + (Math.random()*40 - 20);
-            }
-            targetX = Math.min(Math.max(targetX, 50), 750);
-            targetY = Math.min(Math.max(targetY, 80), GROUND_Y - 50);
-            var dirX = targetX - attacker.x, dirY = targetY - attacker.y;
-            var len = Math.sqrt(dirX*dirX + dirY*dirY);
-            if (len > 0.1) { dirX /= len; dirY /= len; }
-            else { dirX = (NET_X - attacker.x) * 0.6; dirY = -4; }
-            var isSpike = Math.random() > 0.3;
-            var power;
-            if (isLeftPlayer) {
-                power = isSpike ? 9.5 + Math.random()*2.0 : 6.5 + Math.random()*1.5;
-            } else {
-                if (botLevel === 'easy') power = isSpike ? 7.5+Math.random()*1.5 : 5.5+Math.random()*1.0;
-                else if (botLevel === 'hard') power = isSpike ? 12.5+Math.random()*2.0 : 9.5+Math.random()*1.5;
-                else power = isSpike ? 9.5+Math.random()*2.0 : 7.0+Math.random()*1.5;
-            }
-            ball.vy = dirY * power * 0.9 - (isLeftPlayer ? 3.0 : 2.5);
-            ball.vx = dirX * power * 0.9;
-            ball.vx = Math.min(Math.max(ball.vx, -16), 16);
-            ball.vy = Math.min(Math.max(ball.vy, -16), 14);
-            for (var i = 0; i < 8; i++) {
-                sparks.push({ x: ball.x, y: ball.y, vx: (Math.random()-0.5)*6, vy: (Math.random()-0.8)*5, life: 0.4, size: 3, color: isLeftPlayer ? '#FFEE22' : '#FFAA33' });
-            }
+        if (Math.sqrt(dx*dx+dy*dy) <= attacker.r + ball.r + 42) {
+            var tX, tY;
+            if (isLeftPlayer) { tX = playerRight.x + (Math.random()*60-30); tY = playerRight.y - 20 + (Math.random()*40-20); }
+            else { tX = playerLeft.x + (Math.random()*60-30); tY = playerLeft.y - 20 + (Math.random()*40-20); }
+            tX = Math.min(Math.max(tX,50),750); tY = Math.min(Math.max(tY,80),GROUND_Y-50);
+            var dX = tX - attacker.x, dY = tY - attacker.y, len = Math.sqrt(dX*dX+dY*dY);
+            if (len > 0.1) { dX/=len; dY/=len; } else { dX = (NET_X-attacker.x)*0.6; dY = -4; }
+            var isSpike = Math.random() > 0.3, power;
+            if (isLeftPlayer) power = isSpike ? 9.5+Math.random()*2.0 : 6.5+Math.random()*1.5;
+            else { if(botLevel==='easy') power=isSpike?7.5:5.5; else if(botLevel==='hard') power=isSpike?12.5:9.5; else power=isSpike?9.5:7.0; }
+            ball.vy = dY * power * 0.9 - (isLeftPlayer ? 3.0 : 2.5);
+            ball.vx = dX * power * 0.9;
+            ball.vx = Math.min(Math.max(ball.vx, -16), 16); ball.vy = Math.min(Math.max(ball.vy, -16), 14);
+            for (var i=0; i<8; i++) sparks.push({ x: ball.x, y: ball.y, vx: (Math.random()-0.5)*6, vy: (Math.random()-0.8)*5, life: 0.4, size: 3, color: isLeftPlayer ? '#FFEE22' : '#FFAA33' });
         }
     }
     function aiMove() {
-        var moveSpeed, hitChance;
-        if (botLevel === 'easy') { moveSpeed = 0.025; hitChance = 0.25; }
-        else if (botLevel === 'hard') { moveSpeed = 0.06; hitChance = 0.6; }
-        else { moveSpeed = 0.04; hitChance = 0.4; }
-        if (ball.x > NET_X - 30) {
-            var targetX = ball.x + 20;
-            if (targetX > PLAYER_RIGHT_MAX) targetX = PLAYER_RIGHT_MAX;
-            if (targetX < PLAYER_RIGHT_MIN) targetX = PLAYER_RIGHT_MIN;
-            playerRight.x += (targetX - playerRight.x) * moveSpeed;
-        } else {
-            playerRight.x += (600 - playerRight.x) * (moveSpeed * 0.3);
-        }
+        var mSpeed, hChance;
+        if(botLevel==='easy'){mSpeed=0.025; hChance=0.25;} else if(botLevel==='hard'){mSpeed=0.06; hChance=0.6;} else {mSpeed=0.04; hChance=0.4;}
+        if (ball.x > NET_X-30) { var tX = Math.min(Math.max(ball.x+20, PLAYER_RIGHT_MIN), PLAYER_RIGHT_MAX); playerRight.x += (tX-playerRight.x)*mSpeed; }
+        else playerRight.x += (600-playerRight.x)*(mSpeed*0.3);
         playerRight.x = Math.min(Math.max(playerRight.x, PLAYER_RIGHT_MIN), PLAYER_RIGHT_MAX);
-        var dx = ball.x - playerRight.x, dy = ball.y - playerRight.y;
-        var dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < playerRight.r + ball.r + 40 && Math.random() < hitChance) autoHit(playerRight, false);
+        if (Math.sqrt((ball.x-playerRight.x)**2 + (ball.y-playerRight.y)**2) < playerRight.r+ball.r+40 && Math.random()<hChance) autoHit(playerRight, false);
     }
     function updateGame() {
-        if (scorePauseTimer > 0) {
-            scorePauseTimer--;
-            if (scorePauseTimer === 0 && waitingForReady) releaseBall();
-        }
-        if (playerLeft.leftPressed) playerLeft.direction = -1;
-        if (playerLeft.rightPressed) playerLeft.direction = 1;
-        if (playerLeft.leftPressed) playerLeft.x -= KEY_SPEED;
-        if (playerLeft.rightPressed) playerLeft.x += KEY_SPEED;
-        if (playerLeft.jumpPressed) { jump(playerLeft); playerLeft.jumpPressed = false; }
+        if (scorePauseTimer>0) { scorePauseTimer--; if(scorePauseTimer===0 && waitingForReady) releaseBall(); }
+        if (playerLeft.leftPressed) { playerLeft.direction=-1; playerLeft.x-=KEY_SPEED; }
+        if (playerLeft.rightPressed) { playerLeft.direction=1; playerLeft.x+=KEY_SPEED; }
+        if (playerLeft.jumpPressed) { jump(playerLeft); playerLeft.jumpPressed=false; }
         playerLeft.x = Math.min(Math.max(playerLeft.x, PLAYER_LEFT_MIN), PLAYER_LEFT_MAX);
-
-        if (gameMode === 'mabar') {
-            if (playerRight.leftPressed) playerRight.direction = -1;
-            if (playerRight.rightPressed) playerRight.direction = 1;
-            if (playerRight.leftPressed) playerRight.x -= KEY_SPEED;
-            if (playerRight.rightPressed) playerRight.x += KEY_SPEED;
-            if (playerRight.jumpPressed) { jump(playerRight); playerRight.jumpPressed = false; }
+        if (gameMode==='mabar') {
+            if (playerRight.leftPressed) { playerRight.direction=-1; playerRight.x-=KEY_SPEED; }
+            if (playerRight.rightPressed) { playerRight.direction=1; playerRight.x+=KEY_SPEED; }
+            if (playerRight.jumpPressed) { jump(playerRight); playerRight.jumpPressed=false; }
             playerRight.x = Math.min(Math.max(playerRight.x, PLAYER_RIGHT_MIN), PLAYER_RIGHT_MAX);
-        } else if (gameMode === 'bot') {
-            if (ball.x > playerRight.x) playerRight.direction = 1;
-            else playerRight.direction = -1;
-            aiMove();
+        } else if (gameMode==='bot') { playerRight.direction = ball.x>playerRight.x?1:-1; aiMove(); }
+        updateJump(playerLeft); updateJump(playerRight);
+        if (scorePauseTimer===0) {
+            ball.vy+=ball.gravity; ball.vx*=ball.friction; ball.vy*=ball.friction; ball.x+=ball.vx; ball.y+=ball.vy;
+            ball.trail.push({x:ball.x,y:ball.y}); if(ball.trail.length>10) ball.trail.shift();
+            if (ball.x<ball.r){ball.x=ball.r; ball.vx*=-0.6;}
+            if (ball.x>800-ball.r){ball.x=800-ball.r; ball.vx*=-0.6;}
+            if (ball.y>GROUND_Y-ball.r){ ball.y=GROUND_Y-ball.r; ball.vy*=-BOUNCE_FACTOR; if(ball.x<NET_X) rightScore++; else leftScore++; resetBallWithPause(); updateScoreUI(); }
+            if (ball.y<ball.r){ball.y=ball.r; ball.vy*=-0.6;}
+            if (ball.x+ball.r>NET_X-12 && ball.x-ball.r<NET_X+12 && ball.y<NET_BOTTOM && ball.y>NET_TOP-8) { ball.vx*=-NET_BOUNCE; ball.x = ball.x<NET_X ? NET_X-ball.r-2 : NET_X+ball.r+2; }
+            autoHit(playerLeft, true); autoHit(playerRight, false);
         }
-        updateJump(playerLeft);
-        updateJump(playerRight);
-
-        if (scorePauseTimer === 0) {
-            ball.vy += ball.gravity;
-            ball.vx *= ball.friction;
-            ball.vy *= ball.friction;
-            ball.x += ball.vx;
-            ball.y += ball.vy;
-            ball.trail.push({ x: ball.x, y: ball.y });
-            if (ball.trail.length > 10) ball.trail.shift();
-            if (ball.x < ball.r) { ball.x = ball.r; ball.vx *= -0.6; }
-            if (ball.x > 800 - ball.r) { ball.x = 800 - ball.r; ball.vx *= -0.6; }
-            if (ball.y > GROUND_Y - ball.r) {
-                ball.y = GROUND_Y - ball.r;
-                ball.vy *= -BOUNCE_FACTOR;
-                if (ball.x < NET_X) rightScore++;
-                else leftScore++;
-                resetBallWithPause();
-                updateScoreUI();
-            }
-            if (ball.y < ball.r) { ball.y = ball.r; ball.vy *= -0.6; }
-            if (ball.x + ball.r > NET_X - 12 && ball.x - ball.r < NET_X + 12 && ball.y < NET_BOTTOM && ball.y > NET_TOP - 8) {
-                ball.vx *= -NET_BOUNCE;
-                if (ball.x < NET_X) ball.x = NET_X - ball.r - 2;
-                else ball.x = NET_X + ball.r + 2;
-            }
-            autoHit(playerLeft, true);
-            autoHit(playerRight, false);
-        }
-        for (var i = sparks.length - 1; i >= 0; i--) {
-            var s = sparks[i];
-            s.x += s.vx; s.y += s.vy; s.life -= 0.012; s.vy += 0.06;
-            if (s.life <= 0 || s.y > GROUND_Y + 20) sparks.splice(i, 1);
-        }
+        for (var i=sparks.length-1; i>=0; i--) { var s=sparks[i]; s.x+=s.vx; s.y+=s.vy; s.life-=0.012; s.vy+=0.06; if(s.life<=0||s.y>GROUND_Y+20) sparks.splice(i,1); }
     }
     function drawCircleWithEyes(p) {
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.shadowBlur = 20; ctx.shadowColor = p.glow;
-        ctx.beginPath(); ctx.arc(0, 0, p.r, 0, 2*Math.PI);
-        ctx.fillStyle = p.color; ctx.fill();
-        ctx.shadowBlur = 0;
-        ctx.beginPath(); ctx.arc(p.direction === 1 ? 8 : -8, -6, 6, 0, 2*Math.PI);
-        ctx.fillStyle = 'white'; ctx.fill();
-        ctx.beginPath(); ctx.arc(p.direction === 1 ? 10 : -10, -8, 2.5, 0, 2*Math.PI);
-        ctx.fillStyle = '#000'; ctx.fill();
-        ctx.restore();
+        ctx.save(); ctx.translate(p.x,p.y); ctx.shadowBlur=20; ctx.shadowColor=p.glow;
+        ctx.beginPath(); ctx.arc(0,0,p.r,0,2*Math.PI); ctx.fillStyle=p.color; ctx.fill(); ctx.shadowBlur=0;
+        ctx.beginPath(); ctx.arc(p.direction===1?8:-8, -6, 6, 0, 2*Math.PI); ctx.fillStyle='white'; ctx.fill();
+        ctx.beginPath(); ctx.arc(p.direction===1?10:-10, -8, 2.5, 0, 2*Math.PI); ctx.fillStyle='#000'; ctx.fill(); ctx.restore();
     }
     function draw() {
-        ctx.clearRect(0, 0, 800, 500);
-        var grad = ctx.createLinearGradient(0, 0, 0, 500);
-        grad.addColorStop(0, '#03171f');
-        grad.addColorStop(0.7, '#1f4a5c');
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, 800, 500);
-        ctx.fillStyle = '#b89a7a';
-        ctx.fillRect(0, GROUND_Y-8, 800, 80);
-        for (var i=0; i<10; i++) {
-            ctx.beginPath();
-            ctx.moveTo(NET_X, NET_TOP + i*11);
-            ctx.lineTo(NET_X, NET_BOTTOM-5);
-            ctx.strokeStyle = i%2===0 ? '#ccbbaa' : '#bbaabb';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-        }
-        for (var k=0; k<ball.trail.length; k++) {
-            var t = ball.trail[k];
-            var alpha = (k/ball.trail.length)*0.2;
-            ctx.beginPath();
-            ctx.arc(t.x, t.y, ball.r*(k/ball.trail.length)*0.8+2, 0, 2*Math.PI);
-            ctx.fillStyle = 'rgba(160,130,70,' + (alpha*0.5) + ')';
-            ctx.fill();
-        }
-        ctx.beginPath();
-        ctx.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI);
-        ctx.fillStyle = '#ccaa66'; ctx.fill();
-        ctx.strokeStyle = '#eeddbb'; ctx.lineWidth = 2; ctx.stroke();
-        drawCircleWithEyes(playerLeft);
-        drawCircleWithEyes(playerRight);
-        for (var s2=0; s2<sparks.length; s2++) {
-            var sp = sparks[s2];
-            ctx.globalAlpha = sp.life * 0.7;
-            ctx.beginPath();
-            ctx.arc(sp.x, sp.y, sp.size*0.5, 0, 2*Math.PI);
-            ctx.fillStyle = sp.color; ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-        if (scorePauseTimer > 0 && waitingForReady) {
-            ctx.font = 'bold 48px "Segoe UI", sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillStyle = '#ffffff';
-            ctx.fillText('READY...', 400, 200);
-        }
+        ctx.clearRect(0,0,800,500);
+        var g = ctx.createLinearGradient(0,0,0,500); g.addColorStop(0,'#03171f'); g.addColorStop(0.7,'#1f4a5c'); ctx.fillStyle=g; ctx.fillRect(0,0,800,500);
+        ctx.fillStyle='#b89a7a'; ctx.fillRect(0,GROUND_Y-8,800,80);
+        for(var i=0;i<10;i++){ ctx.beginPath(); ctx.moveTo(NET_X, NET_TOP+i*11); ctx.lineTo(NET_X, NET_BOTTOM-5); ctx.strokeStyle=i%2===0?'#ccbbaa':'#bbaabb'; ctx.lineWidth=2; ctx.stroke(); }
+        for(var k=0;k<ball.trail.length;k++){ var t=ball.trail[k]; ctx.beginPath(); ctx.arc(t.x,t.y,ball.r*(k/ball.trail.length)*0.8+2,0,2*Math.PI); ctx.fillStyle='rgba(160,130,70,'+((k/ball.trail.length)*0.2*0.5)+')'; ctx.fill(); }
+        ctx.beginPath(); ctx.arc(ball.x,ball.y,ball.r,0,2*Math.PI); ctx.fillStyle='#ccaa66'; ctx.fill(); ctx.strokeStyle='#eeddbb'; ctx.lineWidth=2; ctx.stroke();
+        drawCircleWithEyes(playerLeft); drawCircleWithEyes(playerRight);
+        for(var s2=0;s2<sparks.length;s2++){ var sp=sparks[s2]; ctx.globalAlpha=sp.life*0.7; ctx.beginPath(); ctx.arc(sp.x,sp.y,sp.size*0.5,0,2*Math.PI); ctx.fillStyle=sp.color; ctx.fill(); }
+        ctx.globalAlpha=1;
+        if(scorePauseTimer>0 && waitingForReady){ ctx.font='bold 48px "Segoe UI", sans-serif'; ctx.textAlign='center'; ctx.fillStyle='#fff'; ctx.fillText('READY...',400,200); }
     }
-    function gameLoop() {
-        if (gameStarted) { updateGame(); draw(); }
-        requestAnimationFrame(gameLoop);
-    }
+    function gameLoop() { if(gameStarted){ updateGame(); draw(); } requestAnimationFrame(gameLoop); }
     function startGame(mode, level) {
-        gameMode = mode;
-        botLevel = level || 'medium';
-        gameStarted = true;
-        if (menuOverlay) menuOverlay.style.display = 'none';
-        leftScore = 0; rightScore = 0;
-        updateScoreUI();
-        resetBallWithPause();
-        if (mode === 'bot') {
-            var lt = { easy: 'MUDAH', medium: 'SEDANG', hard: 'SUSAH' }[botLevel];
-            if (keyHint) keyHint.innerHTML = '<span>P1: A/D, SPASI</span><span>BOT: ' + lt + '</span>';
-        } else {
-            if (keyHint) keyHint.innerHTML = '<span>P1: A/D, SPASI</span><span>P2: ←/→, ↑</span>';
-        }
+        gameMode=mode; botLevel=level||'medium'; gameStarted=true; if(menuOverlay) menuOverlay.style.display='none';
+        leftScore=0; rightScore=0; updateScoreUI(); resetBallWithPause();
+        if(keyHint) keyHint.innerHTML = mode==='bot' ? '<span>P1: A/D, SPASI</span><span>BOT: '+({easy:'MUDAH',medium:'SEDANG',hard:'SUSAH'}[botLevel])+'</span>' : '<span>P1: A/D, SPASI</span><span>P2: ←/→, ↑</span>';
     }
-    function resetGameToLobby() {
-        gameStarted = false;
-        leftScore = 0; rightScore = 0;
-        updateScoreUI();
-        playerLeft.x = 150; playerLeft.y = playerLeft.baseY; playerLeft.isJumping = false; playerLeft.jumpOffset = 0;
-        playerRight.x = 620; playerRight.y = playerRight.baseY; playerRight.isJumping = false; playerRight.jumpOffset = 0;
-        ball.x = 300; ball.y = 300; ball.vx = 3.5; ball.vy = -3.0; ball.trail = [];
-        scorePauseTimer = 0; waitingForReady = false;
-        playerLeft.leftPressed = playerLeft.rightPressed = playerLeft.jumpPressed = false;
-        playerRight.leftPressed = playerRight.rightPressed = playerRight.jumpPressed = false;
-        if (mainMenu) mainMenu.style.display = 'block';
-        if (levelMenu) levelMenu.style.display = 'none';
-        if (menuOverlay) menuOverlay.style.display = 'flex';
-    }
+    if(modeBotBtn) modeBotBtn.onclick = function(){ if(mainMenu)mainMenu.style.display='none'; if(levelMenu)levelMenu.style.display='block'; };
+    if(modeMabarBtn) modeMabarBtn.onclick = function(){ startGame('mabar'); };
+    if(levelEasy) levelEasy.onclick = function(){ startGame('bot','easy'); };
+    if(levelMedium) levelMedium.onclick = function(){ startGame('bot','medium'); };
+    if(levelHard) levelHard.onclick = function(){ startGame('bot','hard'); };
+    if(lobbyBtn) lobbyBtn.onclick = function(){ gameStarted=false; if(mainMenu)mainMenu.style.display='block'; if(levelMenu)levelMenu.style.display='none'; if(menuOverlay)menuOverlay.style.display='flex'; };
+    if(fullscreenBtn && arena) fullscreenBtn.onclick = function(){ if(!document.fullscreenElement) arena.requestFullscreen().catch(function(){}); else document.exitFullscreen(); };
 
-    if (modeBotBtn) modeBotBtn.addEventListener('click', function() {
-        if (mainMenu) mainMenu.style.display = 'none';
-        if (levelMenu) levelMenu.style.display = 'block';
-    });
-    if (modeMabarBtn) modeMabarBtn.addEventListener('click', function() { startGame('mabar'); });
-    if (levelEasy) levelEasy.addEventListener('click', function() { startGame('bot', 'easy'); });
-    if (levelMedium) levelMedium.addEventListener('click', function() { startGame('bot', 'medium'); });
-    if (levelHard) levelHard.addEventListener('click', function() { startGame('bot', 'hard'); });
-
-    function handleKeyDown(e) {
-        if (!gameStarted) return;
-        var k = e.key;
-        if ([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','a','d','A','D'].indexOf(k) !== -1) e.preventDefault();
-        if (k === 'a' || k === 'A') playerLeft.leftPressed = true;
-        if (k === 'd' || k === 'D') playerLeft.rightPressed = true;
-        if (k === ' ') playerLeft.jumpPressed = true;
-        if (gameMode === 'mabar') {
-            if (k === 'ArrowLeft') playerRight.leftPressed = true;
-            if (k === 'ArrowRight') playerRight.rightPressed = true;
-            if (k === 'ArrowUp') playerRight.jumpPressed = true;
-        }
-    }
-    function handleKeyUp(e) {
-        if (!gameStarted) return;
-        var k = e.key;
-        if (k === 'a' || k === 'A') playerLeft.leftPressed = false;
-        if (k === 'd' || k === 'D') playerLeft.rightPressed = false;
-        if (k === ' ') playerLeft.jumpPressed = false;
-        if (gameMode === 'mabar') {
-            if (k === 'ArrowLeft') playerRight.leftPressed = false;
-            if (k === 'ArrowRight') playerRight.rightPressed = false;
-            if (k === 'ArrowUp') playerRight.jumpPressed = false;
-        }
-    }
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
-
-    if (fullscreenBtn && arena) fullscreenBtn.addEventListener('click', function() {
-        if (!document.fullscreenElement) arena.requestFullscreen().catch(function() { alert('fullscreen tidak bisa'); });
-        else document.exitFullscreen();
-    });
-    if (lobbyBtn) lobbyBtn.addEventListener('click', resetGameToLobby);
-
-    currentGameCleanup = function() {
-        window.removeEventListener('keydown', handleKeyDown);
-        window.removeEventListener('keyup', handleKeyUp);
-        gameStarted = false;
-    };
+    function handleKeyDown(e) { if(!gameStarted)return; var k=e.key; if([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','a','d','A','D'].indexOf(k)!==-1) e.preventDefault(); if(k==='a'||k==='A')playerLeft.leftPressed=true; if(k==='d'||k==='D')playerLeft.rightPressed=true; if(k===' ')playerLeft.jumpPressed=true; if(gameMode==='mabar'){ if(k==='ArrowLeft')playerRight.leftPressed=true; if(k==='ArrowRight')playerRight.rightPressed=true; if(k==='ArrowUp')playerRight.jumpPressed=true; } }
+    function handleKeyUp(e) { if(!gameStarted)return; var k=e.key; if(k==='a'||k==='A')playerLeft.leftPressed=false; if(k==='d'||k==='D')playerLeft.rightPressed=false; if(k===' ')playerLeft.jumpPressed=false; if(gameMode==='mabar'){ if(k==='ArrowLeft')playerRight.leftPressed=false; if(k==='ArrowRight')playerRight.rightPressed=false; if(k==='ArrowUp')playerRight.jumpPressed=false; } }
+    window.addEventListener('keydown', handleKeyDown); window.addEventListener('keyup', handleKeyUp);
+    currentGameCleanup = function() { window.removeEventListener('keydown', handleKeyDown); window.removeEventListener('keyup', handleKeyUp); gameStarted=false; };
     gameLoop();
 }
 
-// ===== GAME SPACE RUNNER (PERBAIKAN TOTAL) =====
+// ===== GAME SPACE RUNNER =====
 function startSpaceGameNow() {
-    gameFullscreenContent.innerHTML = 
-        '<div class="space-runner-wrapper">' +
-            '<div class="sr-panel">' +
-                '<div class="sr-header">' +
-                    '<div class="sr-title">🚀 SPACE RUNNER</div>' +
-                    '<div class="sr-score">🏆 <span id="score">0</span></div>' +
-                    '<div class="sr-high">⭐ HIGH: <span id="highScore">0</span></div>' +
-                '</div>' +
-                '<canvas id="gameCanvas" class="sr-canvas" width="900" height="450"></canvas>' +
-                '<div class="sr-controls">' +
-                    '<button class="sr-btn" id="touchLeft">←</button>' +
-                    '<div class="sr-col">' +
-                        '<button class="sr-btn" id="touchUp">↑</button>' +
-                        '<button class="sr-btn" id="touchDown">↓</button>' +
-                    '</div>' +
-                    '<button class="sr-btn" id="touchRight">→</button>' +
-                '</div>' +
-                '<div style="display:flex;justify-content:center;margin-top:12px;">' +
-                    '<button class="sr-restart" id="restartBtn">↺ RESTART</button>' +
-                '</div>' +
-                '<div class="sr-info">Pakai tombol di atas atau keyboard ↑↓←→</div>' +
-            '</div>' +
-        '</div>' +
-        '<div class="game-over" id="gameOver"><h2>GAME OVER</h2><p>Skor Akhir: <span id="finalScore">0</span></p><button id="playAgainBtn">Main Lagi</button></div>';
+    gameFullscreenContent.innerHTML = '<div class="space-runner-wrapper"><div class="sr-panel"><div class="sr-header"><div class="sr-title">🚀 SPACE RUNNER</div><div class="sr-score">🏆 <span id="score">0</span></div><div class="sr-high">⭐ HIGH: <span id="highScore">0</span></div></div><canvas id="gameCanvas" class="sr-canvas" width="900" height="450"></canvas><div class="sr-controls"><button class="sr-btn" id="touchLeft">←</button><div class="sr-col"><button class="sr-btn" id="touchUp">↑</button><button class="sr-btn" id="touchDown">↓</button></div><button class="sr-btn" id="touchRight">→</button></div><div style="display:flex;justify-content:center;margin-top:12px;"><button class="sr-restart" id="restartBtn">↺ RESTART</button></div><div class="sr-info">Pakai tombol di atas atau keyboard ↑↓←→</div></div></div><div class="game-over" id="gameOver"><h2>GAME OVER</h2><p>Skor Akhir: <span id="finalScore">0</span></p><button id="playAgainBtn">Main Lagi</button></div>';
     initSpaceGame();
 }
 
 function initSpaceGame() {
-    var canvas = document.getElementById('gameCanvas');
-    if (!canvas) return;
+    var canvas = document.getElementById('gameCanvas'); if (!canvas) return;
     var ctx = canvas.getContext('2d');
-    var scoreElement = document.getElementById('score');
-    var highScoreElement = document.getElementById('highScore');
-    var finalScoreElement = document.getElementById('finalScore');
-    var gameOverDiv = document.getElementById('gameOver');
-    var restartBtn = document.getElementById('restartBtn');
-    var playAgainBtn = document.getElementById('playAgainBtn');
+    var scoreElement = document.getElementById('score'), highScoreElement = document.getElementById('highScore'), finalScoreElement = document.getElementById('finalScore');
+    var gameOverDiv = document.getElementById('gameOver'), restartBtn = document.getElementById('restartBtn'), playAgainBtn = document.getElementById('playAgainBtn');
 
     var CW = 900, CH = 450;
-    var gameRunning = true; // ← AUTO START
-    var score = 0, frameCount = 0, asteroidSpeed = 3;
-    var highScore = 0;
+    var gameRunning = true;
+    var score = 0, frameCount = 0, asteroidSpeed = 3, highScore = 0;
     try { highScore = parseInt(localStorage.getItem('spaceRunnerProHighScore')) || 0; } catch(_) {}
     if (highScoreElement) highScoreElement.textContent = highScore;
 
     var player = { x: 150, y: CH/2, width: 45, height: 35, speed: 5, minX: 50, maxX: 300 };
-    var asteroids = [];
-    var keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false };
-    var animationFrameId = null;
+    var asteroids = [], keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false }, animationFrameId = null;
 
-    function handleKeyDown(e) {
-        if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].indexOf(e.key) !== -1) {
-            e.preventDefault();
-            keys[e.key] = true;
-        }
-    }
-    function handleKeyUp(e) {
-        if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].indexOf(e.key) !== -1) {
-            e.preventDefault();
-            keys[e.key] = false;
-        }
-    }
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('keyup', handleKeyUp);
+    function handleKeyDown(e) { if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].indexOf(e.key) !== -1) { e.preventDefault(); keys[e.key] = true; } }
+    function handleKeyUp(e) { if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].indexOf(e.key) !== -1) { e.preventDefault(); keys[e.key] = false; } }
+    document.addEventListener('keydown', handleKeyDown); document.addEventListener('keyup', handleKeyUp);
 
-    // TOMBOL SENTUH
     function bindTouch(btn, key) {
         if (!btn) return;
         var on = function(e) { e.preventDefault(); keys[key] = true; btn.classList.add('pressed'); };
         var off = function(e) { if (e) e.preventDefault(); keys[key] = false; btn.classList.remove('pressed'); };
-        btn.addEventListener('mousedown', on);
-        btn.addEventListener('touchstart', on, { passive: false });
-        btn.addEventListener('mouseup', off);
-        btn.addEventListener('mouseleave', off);
-        btn.addEventListener('touchend', off);
-        btn.addEventListener('touchcancel', off);
+        btn.addEventListener('mousedown', on); btn.addEventListener('touchstart', on, { passive: false });
+        btn.addEventListener('mouseup', off); btn.addEventListener('mouseleave', off);
+        btn.addEventListener('touchend', off); btn.addEventListener('touchcancel', off);
     }
-    bindTouch(document.getElementById('touchUp'), 'ArrowUp');
-    bindTouch(document.getElementById('touchDown'), 'ArrowDown');
-    bindTouch(document.getElementById('touchLeft'), 'ArrowLeft');
-    bindTouch(document.getElementById('touchRight'), 'ArrowRight');
+    bindTouch(document.getElementById('touchUp'), 'ArrowUp'); bindTouch(document.getElementById('touchDown'), 'ArrowDown');
+    bindTouch(document.getElementById('touchLeft'), 'ArrowLeft'); bindTouch(document.getElementById('touchRight'), 'ArrowRight');
 
     function Asteroid() {
-        this.width = 35 + Math.random() * 40;
-        this.height = this.width;
-        this.x = CW;
-        this.speed = -(asteroidSpeed + Math.random() * 2);
-        this.y = Math.random() * (CH - this.height);
-        this.rotation = 0;
-        this.rotationSpeed = (Math.random() - 0.5) * 0.1;
+        this.width = 35 + Math.random() * 40; this.height = this.width; this.x = CW;
+        this.speed = -(asteroidSpeed + Math.random() * 2); this.y = Math.random() * (CH - this.height);
+        this.rotation = 0; this.rotationSpeed = (Math.random() - 0.5) * 0.1;
     }
-    Asteroid.prototype.update = function() {
-        this.x += this.speed;
-        this.rotation += this.rotationSpeed;
-    };
+    Asteroid.prototype.update = function() { this.x += this.speed; this.rotation += this.rotationSpeed; };
     Asteroid.prototype.draw = function() {
-        ctx.save();
-        ctx.translate(this.x + this.width/2, this.y + this.height/2);
-        ctx.rotate(this.rotation);
-        ctx.fillStyle = '#8B5A2B';
-        ctx.beginPath();
-        ctx.arc(0, 0, this.width/2, 0, Math.PI*2);
-        ctx.fill();
-        ctx.fillStyle = '#4A2C1A';
-        ctx.beginPath();
-        ctx.arc(-this.width/6, -this.height/8, this.width/5, 0, Math.PI*2);
-        ctx.fill();
-        ctx.fillStyle = '#A07050';
-        ctx.beginPath();
-        ctx.arc(this.width/5, this.height/6, this.width/6, 0, Math.PI*2);
-        ctx.fill();
+        ctx.save(); ctx.translate(this.x + this.width/2, this.y + this.height/2); ctx.rotate(this.rotation);
+        ctx.fillStyle = '#8B5A2B'; ctx.beginPath(); ctx.arc(0, 0, this.width/2, 0, Math.PI*2); ctx.fill();
+        ctx.fillStyle = '#4A2C1A'; ctx.beginPath(); ctx.arc(-this.width/6, -this.height/8, this.width/5, 0, Math.PI*2); ctx.fill();
         ctx.restore();
     };
 
     function drawPlayer() {
-        ctx.save();
-        ctx.translate(player.x, player.y + player.height/2);
-        // Flame
+        ctx.save(); ctx.translate(player.x, player.y + player.height/2);
         if (keys.ArrowLeft || keys.ArrowRight) {
-            ctx.fillStyle = '#FFA500';
-            ctx.beginPath();
-            ctx.moveTo(-5, -8);
-            ctx.lineTo(-20 - Math.random()*10, 0);
-            ctx.lineTo(-5, 8);
-            ctx.closePath();
-            ctx.fill();
+            ctx.fillStyle = '#FFA500'; ctx.beginPath(); ctx.moveTo(-5, -8); ctx.lineTo(-20 - Math.random()*10, 0); ctx.lineTo(-5, 8); ctx.closePath(); ctx.fill();
         }
-        ctx.fillStyle = '#FF4444';
-        ctx.shadowColor = '#FF4444';
-        ctx.shadowBlur = 15;
-        ctx.beginPath();
-        ctx.moveTo(player.width - 10, 0);
-        ctx.lineTo(10, -player.height/2);
-        ctx.lineTo(10, player.height/2);
-        ctx.closePath();
-        ctx.fill();
-        ctx.shadowBlur = 0;
-        // Cockpit
-        ctx.fillStyle = '#87CEEB';
-        ctx.beginPath();
-        ctx.arc(15, 0, 5, 0, Math.PI*2);
-        ctx.fill();
-        // Wings
-        ctx.fillStyle = '#CC3333';
-        ctx.beginPath();
-        ctx.moveTo(20, -player.height/2 + 5);
-        ctx.lineTo(30, -player.height/2);
-        ctx.lineTo(20, -player.height/2 + 10);
-        ctx.closePath();
-        ctx.fill();
-        ctx.beginPath();
-        ctx.moveTo(20, player.height/2 - 5);
-        ctx.lineTo(30, player.height/2);
-        ctx.lineTo(20, player.height/2 - 10);
-        ctx.closePath();
-        ctx.fill();
+        ctx.fillStyle = '#FF4444'; ctx.shadowColor = '#FF4444'; ctx.shadowBlur = 15;
+        ctx.beginPath(); ctx.moveTo(player.width - 10, 0); ctx.lineTo(10, -player.height/2); ctx.lineTo(10, player.height/2); ctx.closePath(); ctx.fill();
+        ctx.shadowBlur = 0; ctx.fillStyle = '#87CEEB'; ctx.beginPath(); ctx.arc(15, 0, 5, 0, Math.PI*2); ctx.fill();
         ctx.restore();
-    }
-
-    function drawStars() {
-        for (var i = 0; i < 70; i++) {
-            var x = (i * 23 + frameCount * (i % 3)) % CW;
-            var y = (i * 17) % CH;
-            var alpha = 0.3 + Math.sin(frameCount * 0.02 + i) * 0.3;
-            ctx.fillStyle = 'rgba(255,255,255,' + alpha + ')';
-            ctx.fillRect(x, y, 2, 2);
-        }
     }
 
     function update() {
@@ -1498,416 +1101,132 @@ function initSpaceGame() {
         if (frameCount % 35 === 0) asteroids.push(new Asteroid());
 
         for (var i = asteroids.length - 1; i >= 0; i--) {
-            var a = asteroids[i];
-            a.update();
-            // Collision
-            if (player.x + 5 < a.x + a.width && player.x + player.width - 5 > a.x &&
-                player.y + 5 < a.y + a.height && player.y + player.height - 5 > a.y) {
-                gameRunning = false;
-                if (finalScoreElement) finalScoreElement.textContent = score;
-                if (gameOverDiv) gameOverDiv.classList.add('show');
-                return;
+            var a = asteroids[i]; a.update();
+            if (player.x + 5 < a.x + a.width && player.x + player.width - 5 > a.x && player.y + 5 < a.y + a.height && player.y + player.height - 5 > a.y) {
+                gameRunning = false; if (finalScoreElement) finalScoreElement.textContent = score; if (gameOverDiv) gameOverDiv.classList.add('show'); return;
             }
             if (a.x + a.width < -50) {
-                asteroids.splice(i, 1);
-                score += 10;
-                if (scoreElement) scoreElement.textContent = score;
-                if (score > highScore) {
-                    highScore = score;
-                    try { localStorage.setItem('spaceRunnerProHighScore', highScore); } catch(_) {}
-                    if (highScoreElement) highScoreElement.textContent = highScore;
-                }
+                asteroids.splice(i, 1); score += 10; if (scoreElement) scoreElement.textContent = score;
+                if (score > highScore) { highScore = score; try { localStorage.setItem('spaceRunnerProHighScore', highScore); } catch(_) {} if (highScoreElement) highScoreElement.textContent = highScore; }
                 if (score % 100 === 0 && score > 0) asteroidSpeed += 0.5;
             }
         }
     }
 
     function draw() {
-        ctx.fillStyle = '#0a0e1a';
-        ctx.fillRect(0, 0, CW, CH);
-        // Nebula
-        ctx.save();
-        ctx.globalAlpha = 0.15;
-        ctx.fillStyle = '#ff00ff';
-        ctx.beginPath();
-        ctx.arc(200 + Math.sin(frameCount * 0.01) * 50, 200, 150, 0, Math.PI*2);
-        ctx.fill();
-        ctx.fillStyle = '#00ffff';
-        ctx.beginPath();
-        ctx.arc(600 + Math.cos(frameCount * 0.01) * 50, 300, 180, 0, Math.PI*2);
-        ctx.fill();
-        ctx.restore();
-        drawStars();
-        for (var i = 0; i < asteroids.length; i++) asteroids[i].draw();
+        ctx.fillStyle = '#0a0e1a'; ctx.fillRect(0, 0, CW, CH);
+        for (var i = 0; i < 70; i++) { var x = (i * 23 + frameCount * (i % 3)) % CW; var y = (i * 17) % CH; ctx.fillStyle = 'rgba(255,255,255,' + (0.3 + Math.sin(frameCount * 0.02 + i) * 0.3) + ')'; ctx.fillRect(x, y, 2, 2); }
+        for (var j = 0; j < asteroids.length; j++) asteroids[j].draw();
         drawPlayer();
     }
 
-    function loop() {
-        try { update(); draw(); }
-        catch(err) { console.error('SR error:', err); }
-        animationFrameId = requestAnimationFrame(loop);
-    }
-
-    function resetGame() {
-        gameRunning = true;
-        score = 0;
-        asteroids = [];
-        player.x = 150;
-        player.y = CH/2;
-        asteroidSpeed = 3;
-        frameCount = 0;
-        if (scoreElement) scoreElement.textContent = '0';
-        if (gameOverDiv) gameOverDiv.classList.remove('show');
-    }
-
-    if (restartBtn) restartBtn.addEventListener('click', resetGame);
-    if (playAgainBtn) playAgainBtn.addEventListener('click', resetGame);
-
+    function loop() { try { update(); draw(); } catch(err) { console.error(err); } animationFrameId = requestAnimationFrame(loop); }
+    function resetGame() { gameRunning = true; score = 0; asteroids = []; player.x = 150; player.y = CH/2; asteroidSpeed = 3; frameCount = 0; if (scoreElement) scoreElement.textContent = '0'; if (gameOverDiv) gameOverDiv.classList.remove('show'); }
+    if (restartBtn) restartBtn.addEventListener('click', resetGame); if (playAgainBtn) playAgainBtn.addEventListener('click', resetGame);
     loop();
 
-    currentGameCleanup = function() {
-        document.removeEventListener('keydown', handleKeyDown);
-        document.removeEventListener('keyup', handleKeyUp);
-        if (animationFrameId) cancelAnimationFrame(animationFrameId);
-        gameRunning = false;
-    };
+    currentGameCleanup = function() { document.removeEventListener('keydown', handleKeyDown); document.removeEventListener('keyup', handleKeyUp); if (animationFrameId) cancelAnimationFrame(animationFrameId); gameRunning = false; };
 }
 
 // ===== GAME TEBAK ANGKA =====
 function startTebakAngkaNow() {
-    gameFullscreenContent.innerHTML = 
-        '<div class="tebak-angka-wrapper">' +
-            '<div class="tebak-angka-container">' +
-                '<h1>🔢 TEBAK ANGKA</h1>' +
-                '<p class="tebak-angka-subtitle">Tebak angka rahasia antara 1 - 100</p>' +
-                '<div class="tebak-stats">' +
-                    '<div class="tebak-stat-item"><div class="tebak-stat-label">Percobaan</div><div class="tebak-stat-value" id="tebakAttempts">0</div></div>' +
-                    '<div class="tebak-stat-item"><div class="tebak-stat-label">Sisa</div><div class="tebak-stat-value" id="tebakRemaining">10</div></div>' +
-                    '<div class="tebak-stat-item"><div class="tebak-stat-label">Skor</div><div class="tebak-stat-value" id="tebakScore">100</div></div>' +
-                '</div>' +
-                '<div class="tebak-game-area">' +
-                    '<input type="number" id="tebakGuessInput" class="tebak-guess-input" placeholder="Angka" min="1" max="100">' +
-                    '<div class="tebak-button-group">' +
-                        '<button id="tebakGuessBtn" class="tebak-btn tebak-btn-primary">✨ Tebak!</button>' +
-                        '<button id="tebakNewGameBtn" class="tebak-btn tebak-btn-secondary">🔄 Game Baru</button>' +
-                        '<button id="tebakHintBtn" class="tebak-btn tebak-btn-danger">💡 Petunjuk</button>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="tebak-message-box" id="tebakMessage">Selamat datang! Ayo tebak angka rahasianya!</div>' +
-                '<div class="tebak-history"><h3>📜 Riwayat Tebakan</h3><div class="tebak-history-list" id="tebakHistoryList"></div></div>' +
-            '</div>' +
-        '</div>';
+    gameFullscreenContent.innerHTML = '<div class="tebak-angka-wrapper"><div class="tebak-angka-container"><h1>🔢 TEBAK ANGKA</h1><p class="tebak-angka-subtitle">Tebak angka rahasia antara 1 - 100</p><div class="tebak-stats"><div class="tebak-stat-item"><div class="tebak-stat-label">Percobaan</div><div class="tebak-stat-value" id="tebakAttempts">0</div></div><div class="tebak-stat-item"><div class="tebak-stat-label">Sisa</div><div class="tebak-stat-value" id="tebakRemaining">10</div></div><div class="tebak-stat-item"><div class="tebak-stat-label">Skor</div><div class="tebak-stat-value" id="tebakScore">100</div></div></div><div class="tebak-game-area"><input type="number" id="tebakGuessInput" class="tebak-guess-input" placeholder="Angka" min="1" max="100"><div class="tebak-button-group"><button id="tebakGuessBtn" class="tebak-btn tebak-btn-primary">✨ Tebak!</button><button id="tebakNewGameBtn" class="tebak-btn tebak-btn-secondary">🔄 Game Baru</button><button id="tebakHintBtn" class="tebak-btn tebak-btn-danger">💡 Petunjuk</button></div></div><div class="tebak-message-box" id="tebakMessage">Selamat datang! Ayo tebak angka rahasianya!</div><div class="tebak-history"><h3>📜 Riwayat Tebakan</h3><div class="tebak-history-list" id="tebakHistoryList"></div></div></div></div>';
     initTebakAngka();
 }
 
 function initTebakAngka() {
-    var guessInput = document.getElementById('tebakGuessInput');
-    if (!guessInput) return;
-    var guessBtn = document.getElementById('tebakGuessBtn');
-    var newGameBtn = document.getElementById('tebakNewGameBtn');
-    var hintBtn = document.getElementById('tebakHintBtn');
-    var messageBox = document.getElementById('tebakMessage');
-    var attemptsSpan = document.getElementById('tebakAttempts');
-    var remainingSpan = document.getElementById('tebakRemaining');
-    var scoreSpan = document.getElementById('tebakScore');
-    var historyList = document.getElementById('tebakHistoryList');
+    var guessInput = document.getElementById('tebakGuessInput'); if (!guessInput) return;
+    var guessBtn = document.getElementById('tebakGuessBtn'), newGameBtn = document.getElementById('tebakNewGameBtn'), hintBtn = document.getElementById('tebakHintBtn');
+    var messageBox = document.getElementById('tebakMessage'), attemptsSpan = document.getElementById('tebakAttempts'), remainingSpan = document.getElementById('tebakRemaining'), scoreSpan = document.getElementById('tebakScore'), historyList = document.getElementById('tebakHistoryList');
+    var secretNumber, attempts, maxAttempts = 10, score, gameOver, guesses;
 
-    var secretNumber = Math.floor(Math.random() * 100) + 1;
-    var attempts = 0;
-    var maxAttempts = 10;
-    var score = 100, gameOver = false, guesses = [];
-
-    function updateDisplay() {
-        if (attemptsSpan) attemptsSpan.textContent = attempts;
-        if (remainingSpan) remainingSpan.textContent = maxAttempts - attempts;
-        if (scoreSpan) scoreSpan.textContent = score;
-    }
-    function showMessage(msg, type) {
-        if (!messageBox) return;
-        messageBox.textContent = msg;
-        messageBox.style.borderLeftColor = type === 'success' ? '#48bb78' : type === 'error' ? '#f56565' : type === 'warning' ? '#ecc94b' : '#ffc107';
-    }
+    function updateDisplay() { if(attemptsSpan) attemptsSpan.textContent=attempts; if(remainingSpan) remainingSpan.textContent=maxAttempts-attempts; if(scoreSpan) scoreSpan.textContent=score; }
+    function showMessage(msg, type) { if(!messageBox)return; messageBox.textContent=msg; messageBox.style.borderLeftColor = type==='success'?'#48bb78':type==='error'?'#f56565':type==='warning'?'#ecc94b':'#ffc107'; }
     function addToHistory(guess) {
-        if (!historyList) return;
-        var item = document.createElement('div');
-        item.className = 'tebak-history-item';
-        if (guess === secretNumber) { item.classList.add('correct'); item.textContent = '🎯 ' + guess; }
-        else if (guess < secretNumber) { item.classList.add('low'); item.textContent = '⬆️ ' + guess; }
-        else { item.classList.add('high'); item.textContent = '⬇️ ' + guess; }
+        if(!historyList)return; var item=document.createElement('div'); item.className='tebak-history-item';
+        if(guess===secretNumber){item.classList.add('correct'); item.textContent='🎯 '+guess;} else if(guess<secretNumber){item.classList.add('low'); item.textContent='⬆️ '+guess;} else {item.classList.add('high'); item.textContent='⬇️ '+guess;}
         historyList.appendChild(item);
     }
     function resetGame() {
-        secretNumber = Math.floor(Math.random() * 100) + 1;
-        attempts = 0; score = 100; gameOver = false; guesses = [];
-        guessInput.disabled = false;
-        if (guessBtn) guessBtn.disabled = false;
-        if (historyList) historyList.innerHTML = '';
-        showMessage('Game baru dimulai! Ayo tebak angka rahasianya!', 'info');
-        updateDisplay();
-        guessInput.value = '';
-        guessInput.focus();
+        secretNumber=Math.floor(Math.random()*100)+1; attempts=0; score=100; gameOver=false; guesses=[];
+        guessInput.disabled=false; if(guessBtn)guessBtn.disabled=false; if(historyList)historyList.innerHTML='';
+        showMessage('Game baru dimulai! Ayo tebak!', 'info'); updateDisplay(); guessInput.value=''; guessInput.focus();
     }
     function makeGuess() {
-        if (gameOver) { showMessage('Game sudah selesai! Klik "Game Baru".', 'error'); return; }
-        var guess = parseInt(guessInput.value);
-        if (isNaN(guess) || guess < 1 || guess > 100) { showMessage('Masukkan angka 1-100!', 'error'); guessInput.value = ''; guessInput.focus(); return; }
-        if (guesses.indexOf(guess) !== -1) { showMessage('Sudah ditebak sebelumnya!', 'warning'); guessInput.value = ''; guessInput.focus(); return; }
-        attempts++;
-        guesses.push(guess);
-        score = Math.max(0, 100 - (attempts * 10));
-
-        if (guess === secretNumber) {
-            showMessage('🎉 SELAMAT! Angkanya ' + secretNumber + '!', 'success');
-            gameOver = true;
-            guessInput.disabled = true;
-            if (guessBtn) guessBtn.disabled = true;
-            score += (maxAttempts - attempts) * 5;
-        } else if (attempts >= maxAttempts) {
-            showMessage('😢 Game Over! Angka rahasianya ' + secretNumber + '.', 'error');
-            gameOver = true;
-            guessInput.disabled = true;
-            if (guessBtn) guessBtn.disabled = true;
-        } else {
-            var diff = Math.abs(guess - secretNumber);
-            if (diff <= 5) showMessage(guess < secretNumber ? '📈 Panas! Terlalu kecil.' : '📉 Panas! Terlalu besar.', 'info');
-            else if (diff <= 15) showMessage(guess < secretNumber ? '🔥 Hangat! Terlalu kecil.' : '🔥 Hangat! Terlalu besar.', 'info');
-            else showMessage(guess < secretNumber ? '❄️ Dingin! Terlalu kecil.' : '❄️ Dingin! Terlalu besar.', 'info');
-        }
-        addToHistory(guess);
-        updateDisplay();
-        guessInput.value = '';
-        guessInput.focus();
+        if(gameOver){showMessage('Game selesai!','error');return;}
+        var guess=parseInt(guessInput.value);
+        if(isNaN(guess)||guess<1||guess>100){showMessage('Masukkan angka 1-100!','error'); guessInput.value=''; return;}
+        if(guesses.indexOf(guess)!==-1){showMessage('Sudah ditebak!','warning'); guessInput.value=''; return;}
+        attempts++; guesses.push(guess); score=Math.max(0,100-(attempts*10));
+        if(guess===secretNumber){ showMessage('🎉 SELAMAT! Angkanya '+secretNumber+'!','success'); gameOver=true; guessInput.disabled=true; if(guessBtn)guessBtn.disabled=true; score+=(maxAttempts-attempts)*5; }
+        else if(attempts>=maxAttempts){ showMessage('😢 Game Over! Angka rahasianya '+secretNumber+'.','error'); gameOver=true; guessInput.disabled=true; if(guessBtn)guessBtn.disabled=true; }
+        else { var diff=Math.abs(guess-secretNumber); if(diff<=5) showMessage(guess<secretNumber?'📈 Panas! Terlalu kecil.':'📉 Panas! Terlalu besar.','info'); else if(diff<=15) showMessage(guess<secretNumber?'🔥 Hangat! Terlalu kecil.':'🔥 Hangat! Terlalu besar.','info'); else showMessage(guess<secretNumber?'❄️ Dingin! Terlalu kecil.':'❄️ Dingin! Terlalu besar.','info'); }
+        addToHistory(guess); updateDisplay(); guessInput.value=''; guessInput.focus();
     }
     function giveHint() {
-        if (gameOver) { showMessage('Game selesai! Mulai baru.', 'error'); return; }
-        var hints = [
-            'Angka ' + (secretNumber % 2 === 0 ? 'genap' : 'ganjil'),
-            'Angka ' + (secretNumber > 50 ? '> 50' : '≤ 50'),
-            'Digit pertama: ' + Math.floor(secretNumber / 10),
-            'Jumlah digit: ' + (Math.floor(secretNumber / 10) + (secretNumber % 10))
-        ];
-        showMessage('💡 Petunjuk: ' + hints[Math.floor(Math.random() * hints.length)], 'info');
-        score = Math.max(0, score - 5);
-        updateDisplay();
+        if(gameOver){showMessage('Game selesai!','error');return;}
+        var hints=['Angka '+(secretNumber%2===0?'genap':'ganjil'),'Angka '+(secretNumber>50?'> 50':'≤ 50'),'Digit pertama: '+Math.floor(secretNumber/10),'Jumlah digit: '+(Math.floor(secretNumber/10)+(secretNumber%10))];
+        showMessage('💡 Petunjuk: '+hints[Math.floor(Math.random()*hints.length)],'info'); score=Math.max(0,score-5); updateDisplay();
     }
-
-    var enterHandler = function(e) { if (e.key === 'Enter') makeGuess(); };
-    if (guessBtn) guessBtn.addEventListener('click', makeGuess);
-    if (newGameBtn) newGameBtn.addEventListener('click', resetGame);
-    if (hintBtn) hintBtn.addEventListener('click', giveHint);
-    guessInput.addEventListener('keypress', enterHandler);
-
+    var enterHandler = function(e){if(e.key==='Enter')makeGuess();};
+    if(guessBtn)guessBtn.addEventListener('click',makeGuess); if(newGameBtn)newGameBtn.addEventListener('click',resetGame); if(hintBtn)hintBtn.addEventListener('click',giveHint); guessInput.addEventListener('keypress',enterHandler);
     resetGame();
-
-    currentGameCleanup = function() {
-        if (guessBtn) guessBtn.removeEventListener('click', makeGuess);
-        if (newGameBtn) newGameBtn.removeEventListener('click', resetGame);
-        if (hintBtn) hintBtn.removeEventListener('click', giveHint);
-        guessInput.removeEventListener('keypress', enterHandler);
-    };
+    currentGameCleanup = function(){ if(guessBtn)guessBtn.removeEventListener('click',makeGuess); if(newGameBtn)newGameBtn.removeEventListener('click',resetGame); if(hintBtn)hintBtn.removeEventListener('click',giveHint); guessInput.removeEventListener('keypress',enterHandler); };
 }
 
 // ===== GAME CANVAS PAINT =====
 function startCanvasPaintNow() {
-    gameFullscreenContent.innerHTML = 
-        '<div class="canvas-paint-wrapper">' +
-            '<div class="canvas-paint-container">' +
-                '<div class="toolbar">' +
-                    '<button class="tool-btn" id="tool-pen"><span>🖊️</span> Pena</button>' +
-                    '<button class="tool-btn" id="tool-eraser"><span>🧽</span> Hapus</button>' +
-                    '<button class="tool-btn" id="tool-text"><span>📝</span> Teks</button>' +
-                    '<button class="tool-btn" id="undo-btn"><span>↩️</span> Undo</button>' +
-                    '<button class="tool-btn" id="redo-btn"><span>↪️</span> Redo</button>' +
-                    '<div style="display:flex;align-items:center;gap:8px;background:#1d1d29;padding:5px 16px;border-radius:40px;border:1px solid #50506b;">' +
-                        '<label style="color:#ccc;font-size:0.9rem;">⚫</label>' +
-                        '<input type="range" id="size-slider" min="1" max="100" value="4" step="1" style="width:100px;">' +
-                        '<span id="size-value" style="color:#ddd;font-size:0.9rem;min-width:40px;">4px</span>' +
-                    '</div>' +
-                    '<div id="color-preview" style="width:32px;height:32px;border-radius:32px;background:#b683ff;border:3px solid #c6c6ff;cursor:pointer;"></div>' +
-                    '<input type="color" id="color-picker" value="#b683ff" style="width:0;height:0;visibility:hidden;">' +
-                '</div>' +
-                '<div id="text-panel" style="display:none;background:#2c2c3f;border-radius:40px;padding:12px 20px;margin-bottom:15px;flex-wrap:wrap;align-items:center;gap:15px;border:1px solid #7a7ab0;">' +
-                    '<input type="text" id="text-input" placeholder="Tulis teks..." value="Halo Dunia" style="background:#1e1e2c;border:2px solid #6d5cce;color:white;padding:10px 15px;border-radius:30px;font-size:1rem;width:250px;outline:none;">' +
-                    '<button id="apply-text" style="background:#6d5cce;border:none;color:white;padding:8px 25px;border-radius:30px;font-weight:bold;cursor:pointer;">Terapkan</button>' +
-                '</div>' +
-                '<div style="background:#1b1b24;padding:15px;border-radius:20px;border:1px solid #5f5f82;">' +
-                    '<canvas id="main-canvas" class="paint-canvas" width="800" height="500"></canvas>' +
-                '</div>' +
-            '</div>' +
-        '</div>';
+    gameFullscreenContent.innerHTML = '<div class="canvas-paint-wrapper"><div class="canvas-paint-container"><div class="toolbar"><button class="tool-btn" id="tool-pen"><span>🖊️</span> Pena</button><button class="tool-btn" id="tool-eraser"><span>🧽</span> Hapus</button><button class="tool-btn" id="tool-text"><span>📝</span> Teks</button><button class="tool-btn" id="undo-btn"><span>↩️</span> Undo</button><button class="tool-btn" id="redo-btn"><span>↪️</span> Redo</button><div style="display:flex;align-items:center;gap:8px;background:#1d1d29;padding:5px 16px;border-radius:40px;border:1px solid #50506b;"><label style="color:#ccc;font-size:0.9rem;">⚫</label><input type="range" id="size-slider" min="1" max="100" value="4" step="1" style="width:100px;"><span id="size-value" style="color:#ddd;font-size:0.9rem;min-width:40px;">4px</span></div><div id="color-preview" style="width:32px;height:32px;border-radius:32px;background:#b683ff;border:3px solid #c6c6ff;cursor:pointer;"></div><input type="color" id="color-picker" value="#b683ff" style="width:0;height:0;visibility:hidden;"></div><div id="text-panel" style="display:none;background:#2c2c3f;border-radius:40px;padding:12px 20px;margin-bottom:15px;flex-wrap:wrap;align-items:center;gap:15px;border:1px solid #7a7ab0;"><input type="text" id="text-input" placeholder="Tulis teks..." value="Halo Dunia" style="background:#1e1e2c;border:2px solid #6d5cce;color:white;padding:10px 15px;border-radius:30px;font-size:1rem;width:250px;outline:none;"><button id="apply-text" style="background:#6d5cce;border:none;color:white;padding:8px 25px;border-radius:30px;font-weight:bold;cursor:pointer;">Terapkan</button></div><div style="background:#1b1b24;padding:15px;border-radius:20px;border:1px solid #5f5f82;"><canvas id="main-canvas" class="paint-canvas" width="800" height="500"></canvas></div></div></div>';
     initCanvasPaint();
 }
 
 function initCanvasPaint() {
-    var canvas = document.getElementById('main-canvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var W = 800, H = 500;
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, W, H);
-
+    var canvas = document.getElementById('main-canvas'); if (!canvas) return;
+    var ctx = canvas.getContext('2d'), W = 800, H = 500;
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
     var undoStack = [], redoStack = [], isUndoRedo = false;
-    function saveState() {
-        if (isUndoRedo) return;
-        var d = ctx.getImageData(0, 0, W, H);
-        undoStack.push(d);
-        if (undoStack.length > 30) undoStack.shift();
-        redoStack = [];
-    }
-    function undo() {
-        if (undoStack.length <= 1) return;
-        isUndoRedo = true;
-        redoStack.push(ctx.getImageData(0, 0, W, H));
-        undoStack.pop();
-        ctx.putImageData(undoStack[undoStack.length - 1], 0, 0);
-        isUndoRedo = false;
-    }
-    function redo() {
-        if (redoStack.length === 0) return;
-        isUndoRedo = true;
-        var next = redoStack.pop();
-        undoStack.push(next);
-        ctx.putImageData(next, 0, 0);
-        isUndoRedo = false;
-    }
-
+    function saveState() { if(isUndoRedo)return; var d=ctx.getImageData(0,0,W,H); undoStack.push(d); if(undoStack.length>30)undoStack.shift(); redoStack=[]; }
+    function undo() { if(undoStack.length<=1)return; isUndoRedo=true; redoStack.push(ctx.getImageData(0,0,W,H)); undoStack.pop(); ctx.putImageData(undoStack[undoStack.length-1],0,0); isUndoRedo=false; }
+    function redo() { if(redoStack.length===0)return; isUndoRedo=true; var n=redoStack.pop(); undoStack.push(n); ctx.putImageData(n,0,0); isUndoRedo=false; }
     var painting = false, currentTool = 'pen', brushSize = 4, currentColor = '#b683ff', lastX = 0, lastY = 0;
-
-    var penBtn = document.getElementById('tool-pen');
-    var eraserBtn = document.getElementById('tool-eraser');
-    var textBtn = document.getElementById('tool-text');
-    var undoBtn = document.getElementById('undo-btn');
-    var redoBtn = document.getElementById('redo-btn');
-    var colorPicker = document.getElementById('color-picker');
-    var colorPreview = document.getElementById('color-preview');
-    var sizeSlider = document.getElementById('size-slider');
-    var sizeSpan = document.getElementById('size-value');
-    var textPanel = document.getElementById('text-panel');
-    var textInput = document.getElementById('text-input');
-    var applyTextBtn = document.getElementById('apply-text');
-
+    var penBtn = document.getElementById('tool-pen'), eraserBtn = document.getElementById('tool-eraser'), textBtn = document.getElementById('tool-text');
+    var undoBtn = document.getElementById('undo-btn'), redoBtn = document.getElementById('redo-btn'), colorPicker = document.getElementById('color-picker'), colorPreview = document.getElementById('color-preview');
+    var sizeSlider = document.getElementById('size-slider'), sizeSpan = document.getElementById('size-value'), textPanel = document.getElementById('text-panel'), textInput = document.getElementById('text-input'), applyTextBtn = document.getElementById('apply-text');
     function setActiveTool(tool) {
-        [penBtn, eraserBtn, textBtn].forEach(function(b) { if (b) b.classList.remove('active-tool'); });
-        if (tool === 'pen' && penBtn) penBtn.classList.add('active-tool');
-        if (tool === 'eraser' && eraserBtn) eraserBtn.classList.add('active-tool');
-        if (tool === 'text' && textBtn) textBtn.classList.add('active-tool');
-        currentTool = tool;
-        if (textPanel) textPanel.style.display = (tool === 'text') ? 'flex' : 'none';
+        [penBtn, eraserBtn, textBtn].forEach(function(b) { if(b)b.classList.remove('active-tool'); });
+        if(tool==='pen'&&penBtn)penBtn.classList.add('active-tool'); if(tool==='eraser'&&eraserBtn)eraserBtn.classList.add('active-tool'); if(tool==='text'&&textBtn)textBtn.classList.add('active-tool');
+        currentTool=tool; if(textPanel)textPanel.style.display=(tool==='text')?'flex':'none';
     }
-
-    if (penBtn) penBtn.onclick = function() { setActiveTool('pen'); };
-    if (eraserBtn) eraserBtn.onclick = function() { setActiveTool('eraser'); };
-    if (textBtn) textBtn.onclick = function() { setActiveTool('text'); };
-    if (undoBtn) undoBtn.onclick = undo;
-    if (redoBtn) redoBtn.onclick = redo;
-
-    if (sizeSlider) sizeSlider.addEventListener('input', function(e) {
-        brushSize = parseInt(e.target.value);
-        if (sizeSpan) sizeSpan.innerText = brushSize + 'px';
-    });
-    if (colorPreview && colorPicker) {
-        colorPreview.addEventListener('click', function() { colorPicker.click(); });
-        colorPicker.addEventListener('input', function(e) {
-            currentColor = e.target.value;
-            colorPreview.style.backgroundColor = currentColor;
-        });
-    }
-
+    if(penBtn)penBtn.onclick=function(){setActiveTool('pen');}; if(eraserBtn)eraserBtn.onclick=function(){setActiveTool('eraser');}; if(textBtn)textBtn.onclick=function(){setActiveTool('text');}; if(undoBtn)undoBtn.onclick=undo; if(redoBtn)redoBtn.onclick=redo;
+    if(sizeSlider) sizeSlider.addEventListener('input',function(e){ brushSize=parseInt(e.target.value); if(sizeSpan)sizeSpan.innerText=brushSize+'px'; });
+    if(colorPreview&&colorPicker){ colorPreview.addEventListener('click',function(){colorPicker.click();}); colorPicker.addEventListener('input',function(e){ currentColor=e.target.value; colorPreview.style.backgroundColor=currentColor; }); }
     function getCoords(e) {
-        var rect = canvas.getBoundingClientRect();
-        var sx = canvas.width / rect.width, sy = canvas.height / rect.height;
-        var cx, cy;
-        if (e.touches && e.touches.length) { cx = e.touches[0].clientX; cy = e.touches[0].clientY; }
-        else { cx = e.clientX; cy = e.clientY; }
-        var x = (cx - rect.left) * sx, y = (cy - rect.top) * sy;
-        if (x < 0 || x >= W || y < 0 || y >= H) return null;
-        return { x: Math.floor(x), y: Math.floor(y) };
+        var rect=canvas.getBoundingClientRect(), sx=canvas.width/rect.width, sy=canvas.height/rect.height, cx, cy;
+        if(e.touches&&e.touches.length){cx=e.touches[0].clientX; cy=e.touches[0].clientY;} else {cx=e.clientX; cy=e.clientY;}
+        var x=(cx-rect.left)*sx, y=(cy-rect.top)*sy; if(x<0||x>=W||y<0||y>=H)return null; return {x:Math.floor(x),y:Math.floor(y)};
     }
-    function drawLine(x1, y1, x2, y2) {
-        ctx.save();
-        if (currentTool === 'eraser') { ctx.globalCompositeOperation = 'destination-out'; ctx.strokeStyle = '#000'; }
-        else ctx.strokeStyle = currentColor;
-        ctx.lineWidth = brushSize; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-        ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
-        ctx.restore();
-    }
-    function drawPoint(x, y) {
-        ctx.save();
-        if (currentTool === 'eraser') { ctx.globalCompositeOperation = 'destination-out'; ctx.fillStyle = '#000'; }
-        else ctx.fillStyle = currentColor;
-        ctx.beginPath(); ctx.arc(x, y, brushSize/2, 0, Math.PI*2); ctx.fill();
-        ctx.restore();
-    }
-    function start(e) {
-        e.preventDefault();
-        var p = getCoords(e); if (!p) return;
-        painting = true; drawPoint(p.x, p.y); lastX = p.x; lastY = p.y;
-    }
-    function move(e) {
-        e.preventDefault();
-        if (!painting || (currentTool !== 'pen' && currentTool !== 'eraser')) return;
-        var p = getCoords(e); if (!p) return;
-        drawLine(lastX, lastY, p.x, p.y); lastX = p.x; lastY = p.y;
-    }
-    function stop() { if (painting) { painting = false; saveState(); } }
-
-    canvas.addEventListener('mousedown', start);
-    canvas.addEventListener('mousemove', move);
-    canvas.addEventListener('mouseup', stop);
-    canvas.addEventListener('mouseleave', stop);
-    canvas.addEventListener('touchstart', start, { passive: false });
-    canvas.addEventListener('touchmove', move, { passive: false });
-    canvas.addEventListener('touchend', stop);
-    canvas.addEventListener('touchcancel', stop);
-
-    if (applyTextBtn && textInput) applyTextBtn.addEventListener('click', function() {
-        var t = textInput.value.trim(); if (!t) return;
-        ctx.save();
-        ctx.font = '40px "Poppins", sans-serif';
-        ctx.fillStyle = currentColor;
-        ctx.textBaseline = 'middle'; ctx.textAlign = 'center';
-        ctx.fillText(t, W/2, H/2);
-        ctx.restore();
-        saveState();
-        setActiveTool('pen');
-    });
-
-    saveState();
-    setActiveTool('pen');
-
-    currentGameCleanup = function() {
-        canvas.removeEventListener('mousedown', start);
-        canvas.removeEventListener('mousemove', move);
-        canvas.removeEventListener('mouseup', stop);
-        canvas.removeEventListener('mouseleave', stop);
-        canvas.removeEventListener('touchstart', start);
-        canvas.removeEventListener('touchmove', move);
-        canvas.removeEventListener('touchend', stop);
-        canvas.removeEventListener('touchcancel', stop);
-    };
+    function drawLine(x1,y1,x2,y2) { ctx.save(); if(currentTool==='eraser'){ctx.globalCompositeOperation='destination-out'; ctx.strokeStyle='#000';} else ctx.strokeStyle=currentColor; ctx.lineWidth=brushSize; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke(); ctx.restore(); }
+    function drawPoint(x,y) { ctx.save(); if(currentTool==='eraser'){ctx.globalCompositeOperation='destination-out'; ctx.fillStyle='#000';} else ctx.fillStyle=currentColor; ctx.beginPath(); ctx.arc(x,y,brushSize/2,0,Math.PI*2); ctx.fill(); ctx.restore(); }
+    function start(e) { e.preventDefault(); var p=getCoords(e); if(!p)return; painting=true; drawPoint(p.x,p.y); lastX=p.x; lastY=p.y; }
+    function move(e) { e.preventDefault(); if(!painting||(currentTool!=='pen'&&currentTool!=='eraser'))return; var p=getCoords(e); if(!p)return; drawLine(lastX,lastY,p.x,p.y); lastX=p.x; lastY=p.y; }
+    function stop() { if(painting){painting=false; saveState();} }
+    canvas.addEventListener('mousedown',start); canvas.addEventListener('mousemove',move); canvas.addEventListener('mouseup',stop); canvas.addEventListener('mouseleave',stop);
+    canvas.addEventListener('touchstart',start,{passive:false}); canvas.addEventListener('touchmove',move,{passive:false}); canvas.addEventListener('touchend',stop); canvas.addEventListener('touchcancel',stop);
+    if(applyTextBtn&&textInput) applyTextBtn.addEventListener('click',function(){ var t=textInput.value.trim(); if(!t)return; ctx.save(); ctx.font='40px "Poppins", sans-serif'; ctx.fillStyle=currentColor; ctx.textBaseline='middle'; ctx.textAlign='center'; ctx.fillText(t,W/2,H/2); ctx.restore(); saveState(); setActiveTool('pen'); });
+    saveState(); setActiveTool('pen');
+    currentGameCleanup = function() { canvas.removeEventListener('mousedown',start); canvas.removeEventListener('mousemove',move); canvas.removeEventListener('mouseup',stop); canvas.removeEventListener('mouseleave',stop); canvas.removeEventListener('touchstart',start); canvas.removeEventListener('touchmove',move); canvas.removeEventListener('touchend',stop); canvas.removeEventListener('touchcancel',stop); };
 }
 
 // ===== BIND GAME SELECTORS =====
-function bindGame(el, type) {
-    if (!el) { console.warn('Elemen tidak ada:', type); return; }
-    el.addEventListener('click', function() {
-        try { showSunLoading(type); }
-        catch (err) { console.error('Gagal mulai:', type, err); alert('Gagal: ' + err.message); }
-    });
-}
-bindGame(selectVolly, 'voli');
-bindGame(selectSpace, 'space');
-bindGame(selectTebakAngka, 'tebakangka');
-bindGame(selectCanvasPaint, 'canvaspaint');
+function bindGame(el, type) { if(!el)return; el.addEventListener('click',function(){ try{showSunLoading(type);}catch(err){alert('Gagal: '+err.message);} }); }
+bindGame(selectVolly,'voli'); bindGame(selectSpace,'space'); bindGame(selectTebakAngka,'tebakangka'); bindGame(selectCanvasPaint,'canvaspaint');
 
-if (closeFullscreenBtn) closeFullscreenBtn.addEventListener('click', function() {
-    if (gameLoadingInterval) { clearInterval(gameLoadingInterval); gameLoadingInterval = null; }
+if(closeFullscreenBtn) closeFullscreenBtn.addEventListener('click',function() {
+    if(gameLoadingInterval){clearInterval(gameLoadingInterval); gameLoadingInterval=null;}
     cleanupCurrentGame();
-    if (gameFullscreen) gameFullscreen.classList.remove('active');
-    if (gameFullscreenContent) gameFullscreenContent.innerHTML = '';
+    if(gameFullscreen) gameFullscreen.classList.remove('active');
+    if(gameFullscreenContent) gameFullscreenContent.innerHTML='';
 });
-
-console.log('✅ Script loaded OK');
 })();
 </script>
 </body>
