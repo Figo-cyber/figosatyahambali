@@ -9,7 +9,8 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { min-height: 100vh; font-family: 'Segoe UI', Roboto, sans-serif; background: #fefefe; color: #2c3e50; overflow-x: hidden; }
 
-#loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: linear-gradient(145deg, #fff9e6 0%, #ffffff 45%, #fff2cc 100%); transition: opacity 0.8s ease, visibility 0.8s ease; opacity: 1; visibility: visible; overflow: hidden; }
+/* ===== LOADING SCREEN (DIPERBAIKI) ===== */
+#loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1000000; background: linear-gradient(145deg, #fff9e6 0%, #ffffff 45%, #fff2cc 100%); transition: opacity 0.8s ease, visibility 0.8s ease; opacity: 1; visibility: visible; overflow: hidden; }
 #loading-screen.hidden { opacity: 0; visibility: hidden; }
 .particle-network { position: absolute; width:100%; height:100%; top:0; left:0; z-index:1; pointer-events:none; }
 .network-node { position: absolute; width:4px; height:4px; background:#e6b800; border-radius:50%; box-shadow:0 0 20px #ffd700; animation:nodePulse 3s ease-in-out infinite; }
@@ -18,11 +19,11 @@ body { min-height: 100vh; font-family: 'Segoe UI', Roboto, sans-serif; backgroun
 .orb { position:absolute; width:20px; height:20px; background:radial-gradient(circle at 30%30%,#ffd700,#e6b800); border-radius:50%; filter:blur(2px); animation:orbFloat 4s ease-in-out infinite; }
 @keyframes orbFloat { 0%,100%{transform:translate(0,0) scale(1); opacity:0.6;} 50%{transform:translate(20px,-20px) scale(1.5); opacity:0.3;} }
 .loading-universe { position:relative; width:100%; height:100vh; display:flex; justify-content:center; align-items:center; z-index:2; perspective:1200px; pointer-events:none; }
-.loading-card { pointer-events:auto; position:relative; width:600px; padding:50px; background:rgba(255,250,240,0.9); backdrop-filter:blur(10px); border-radius:50px; border:2px solid rgba(255,215,0,0.7); box-shadow:0 50px 80px rgba(255,215,0,0.4), 0 0 0 2px rgba(255,255,255,0.8) inset, 0 0 40px rgba(255,215,0,0.5); transform-style:preserve-3d; animation:cardFloat3D 6s ease-in-out infinite; text-align:center; overflow:hidden; transform:translateZ(30px); }
+.loading-card { pointer-events:auto; position:relative; width:min(600px, 92vw); padding:clamp(24px, 6vw, 50px); background:rgba(255,250,240,0.9); backdrop-filter:blur(10px); border-radius:clamp(28px, 8vw, 50px); border:2px solid rgba(255,215,0,0.7); box-shadow:0 50px 80px rgba(255,215,0,0.4), 0 0 0 2px rgba(255,255,255,0.8) inset, 0 0 40px rgba(255,215,0,0.5); transform-style:preserve-3d; animation:cardFloat3D 6s ease-in-out infinite; text-align:center; overflow:hidden; transform:translateZ(30px); }
 @keyframes cardFloat3D { 0%,100%{ transform:translateY(0) rotateX(0deg) rotateY(0deg) translateZ(30px); } 25%{ transform:translateY(-20px) rotateX(8deg) rotateY(8deg) translateZ(50px); } 50%{ transform:translateY(0) rotateX(0deg) rotateY(15deg) translateZ(30px); } 75%{ transform:translateY(20px) rotateX(-8deg) rotateY(8deg) translateZ(50px); } }
 .card-shine { position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.6) 25%, transparent 30%, transparent 70%, rgba(255,215,0,0.4) 75%, transparent 80%); animation:shineMove3D 5s linear infinite; pointer-events:none; transform:translateZ(10px); }
 @keyframes shineMove3D { 0%{ transform:translateX(-100%) translateY(-100%) rotate(25deg) translateZ(10px); } 100%{ transform:translateX(100%) translateY(100%) rotate(25deg) translateZ(10px); } }
-.logo-3d { position:relative; width:150px; height:150px; margin:0 auto 30px; transform-style:preserve-3d; animation:logoSpin3D 12s linear infinite; transform:translateZ(40px); }
+.logo-3d { position:relative; width:clamp(90px, 26vw, 150px); height:clamp(90px, 26vw, 150px); margin:0 auto 30px; transform-style:preserve-3d; animation:logoSpin3D 12s linear infinite; transform:translateZ(40px); }
 .logo-ring { position:absolute; width:100%; height:100%; border:4px solid #ffd700; border-radius:50%; box-shadow:0 0 30px #ffd700; transform-style:preserve-3d; }
 .logo-ring:nth-child(1){ transform:rotateX(90deg) translateZ(40px); animation:ringPulse3D 2s ease-in-out infinite; }
 .logo-ring:nth-child(2){ transform:rotateY(90deg) translateZ(40px); animation:ringPulse3D 2s ease-in-out infinite 0.5s; }
@@ -30,7 +31,7 @@ body { min-height: 100vh; font-family: 'Segoe UI', Roboto, sans-serif; backgroun
 .logo-ring:nth-child(4){ transform:rotateX(-45deg) rotateY(45deg) translateZ(40px); animation:ringPulse3D 2s ease-in-out infinite 1.5s; }
 @keyframes logoSpin3D { 0%{ transform:rotateX(0) rotateY(0) rotateZ(0) translateZ(40px); } 100%{ transform:rotateX(360deg) rotateY(360deg) rotateZ(360deg) translateZ(40px); } }
 @keyframes ringPulse3D { 0%,100%{ border-color:#ffd700; box-shadow:0 0 30px #ffd700; } 50%{ border-color:#fff5b0; box-shadow:0 0 60px #fff5b0; } }
-.glitch-text { font-size:3.5rem; font-weight:900; text-transform:uppercase; position:relative; color:#b8860b; text-shadow:0.05em 0 0 rgba(255,215,0,0.75), -0.025em -0.05em 0 rgba(200,170,0,0.75), 0.025em 0.05em 0 rgba(255,215,0,0.75); animation:glitch 500ms infinite; letter-spacing:5px; margin:20px 0; transform:translateZ(20px); }
+.glitch-text { font-size:clamp(1.4rem, 8vw, 3.5rem); font-weight:900; text-transform:uppercase; position:relative; color:#b8860b; text-shadow:0.05em 0 0 rgba(255,215,0,0.75), -0.025em -0.05em 0 rgba(200,170,0,0.75), 0.025em 0.05em 0 rgba(255,215,0,0.75); animation:glitch 500ms infinite; letter-spacing:clamp(2px, 1vw, 5px); margin:20px 0; transform:translateZ(20px); }
 .glitch-text span{ position:absolute; top:0; left:0; color:#b8860b; }
 .glitch-text span:first-child{ animation:glitch 650ms infinite; clip-path:polygon(0 0, 100% 0, 100% 45%, 0 45%); transform:translate(-0.025em, -0.0125em) translateZ(15px); opacity:0.8; }
 .glitch-text span:last-child{ animation:glitch 375ms infinite; clip-path:polygon(0 80%, 100% 20%, 100% 100%, 0 100%); transform:translate(0.0125em, 0.025em) translateZ(15px); opacity:0.8; }
@@ -44,13 +45,12 @@ body { min-height: 100vh; font-family: 'Segoe UI', Roboto, sans-serif; backgroun
 @keyframes dotPulse { 0%,100%{ transform:scale(1); opacity:0.7; } 50%{ transform:scale(1.5); opacity:1; box-shadow:0 0 20px currentColor; } }
 .progress-container { margin:30px 0; position:relative; transform:translateZ(25px); }
 .progress-track { width:100%; height:15px; background:rgba(255,215,0,0.2); border-radius:30px; overflow:hidden; border:2px solid rgba(255,215,0,0.5); box-shadow:0 0 20px rgba(255,215,0,0.3); }
-.progress-fill-advanced { width:0%; height:100%; background:linear-gradient(90deg, transparent, #fff5b0 20%, #ffd700 50%, #fff5b0 80%, transparent); background-size:200% 100%; animation:progressFill 2.5s ease-in-out infinite, progressShine 1.5s linear infinite; }
-@keyframes progressFill { 0%{ width:0%; } 50%{ width:100%; } 100%{ width:0%; margin-left:100%; } }
+.progress-fill-advanced { width:0%; height:100%; background:linear-gradient(90deg, transparent, #fff5b0 20%, #ffd700 50%, #fff5b0 80%, transparent); background-size:200% 100%; animation:progressShine 1.5s linear infinite; transition:width 0.1s linear; }
 @keyframes progressShine { 0%{ background-position:200% 0; } 100%{ background-position:-200% 0; } }
-.digital-counter { font-family:'Courier New', monospace; font-size:2rem; color:#b8860b; text-shadow:0 0 20px #ffd700; margin-top:20px; display:inline-block; padding:10px 30px; background:rgba(255,255,255,0.7); border-radius:50px; border:1px solid rgba(255,215,0,0.5); overflow:hidden; backdrop-filter:blur(5px); position:relative; transform:translateZ(30px); }
+.digital-counter { font-family:'Courier New', monospace; font-size:clamp(1.2rem, 5vw, 2rem); color:#b8860b; text-shadow:0 0 20px #ffd700; margin-top:20px; display:inline-block; padding:10px clamp(16px, 6vw, 30px); background:rgba(255,255,255,0.7); border-radius:50px; border:1px solid rgba(255,215,0,0.5); overflow:hidden; backdrop-filter:blur(5px); position:relative; transform:translateZ(30px); }
 .counter-glitch { position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent); animation:counterGlitch 2s linear infinite; }
 @keyframes counterGlitch { 0%{ transform:translateX(-100%); } 100%{ transform:translateX(100%); } }
-.loading-message { color:#666; font-size:1rem; letter-spacing:2px; margin-top:20px; display:inline-block; padding:5px 15px; background:linear-gradient(90deg, transparent, rgba(255,215,0,0.2), transparent); font-weight:500; transform:translateZ(20px); }
+.loading-message { color:#666; font-size:clamp(0.75rem, 3vw, 1rem); letter-spacing:2px; margin-top:20px; display:inline-block; padding:5px 15px; background:linear-gradient(90deg, transparent, rgba(255,215,0,0.2), transparent); font-weight:500; transform:translateZ(20px); }
 
 #main-content { position:relative; z-index:1; min-height:100vh; background:#fefefe; display:none; }
 #particle-canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none; opacity:0.3; }
@@ -77,6 +77,7 @@ header h1 { font-size: 64px; font-weight: 800; background: linear-gradient(90deg
 .tab-btn { background: transparent; border: none; font-size: 26px; font-weight: 700; padding: 14px 38px; border-radius: 60px; cursor: pointer; transition: 0.3s; color: #b8860b; border: 2px solid transparent; background: rgba(255, 240, 210, 0.6); backdrop-filter: blur(5px); box-shadow: 0 4px 10px rgba(255,193,7,0.2); display: flex; align-items: center; gap: 10px; animation: floatUpDown 8s infinite; }
 .tab-btn:nth-child(2) { animation-delay: 0.4s; }
 .tab-btn:nth-child(3) { animation-delay: 0.8s; }
+.tab-btn:nth-child(4) { animation-delay: 1.2s; }
 .tab-btn.active { border-color: #ffc107; background: linear-gradient(145deg, #fff6e0, #ffebc0); box-shadow: 0 10px 25px #ffc10780; transform: scale(1.05); animation: none; }
 .tab-btn:hover { background: #fff2cc; border-color: #ffc107; }
 
@@ -151,9 +152,9 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
 .location-badge { display: flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.5); padding: 5px 14px; border-radius: 40px; border: 1px solid rgba(255, 215, 0, 0.3); font-size: 0.72rem; font-weight: 500; color: #ffecb3; letter-spacing: 0.3px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .qibla-body { display: flex; gap: 24px; align-items: center; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
 .compass-container { position: relative; width: 220px; height: 220px; flex-shrink: 0; }
-.compass { width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #1a2d22 0%, #0a1a14 70%, #000 100%); border: 3px solid #ffc107; box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.08), 0 0 40px rgba(255, 215, 0, 0.25), inset 0 0 30px rgba(0, 0, 0, 0.8); position: relative; animation: compassGlow 4s ease-in-out infinite; }
+.compass { width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #1a2d22 0%, #0a1a14 70%, #000 100%); border: 3px solid #ffc107; box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.08), 0 0 40px rgba(255, 215, 0, 0.25), inset 0 0 30px rgba(0, 0, 0, 0.8); position: relative; animation: compassGlow 4s ease-in-out infinite; --tick-r: 100px; }
 @keyframes compassGlow { 0%,100% { box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.08), 0 0 40px rgba(255, 215, 0, 0.25), inset 0 0 30px rgba(0, 0, 0, 0.8); } 50% { box-shadow: 0 0 0 6px rgba(255, 215, 0, 0.15), 0 0 60px rgba(255, 215, 0, 0.45), inset 0 0 30px rgba(0, 0, 0, 0.8); } }
-.compass-tick { position: absolute; top: 50%; left: 50%; width: 2px; height: 6px; background: rgba(255, 215, 0, 0.4); transform-origin: 50% calc(50% + 100px); border-radius: 2px; }
+.compass-tick { position: absolute; top: 50%; left: 50%; width: 2px; height: 6px; background: rgba(255, 215, 0, 0.4); border-radius: 2px; }
 .compass-mark { position: absolute; color: #ffecb3; font-weight: 800; font-size: 1.05rem; text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); letter-spacing: 1px; z-index: 3; }
 .compass-mark.n { top: 8px; left: 50%; transform: translateX(-50%); color: #ff6b6b; }
 .compass-mark.e { right: 10px; top: 50%; transform: translateY(-50%); }
@@ -161,7 +162,6 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
 .compass-mark.w { left: 10px; top: 50%; transform: translateY(-50%); }
 .compass-center { position: absolute; width: 16px; height: 16px; background: radial-gradient(circle at 30% 30%, #ffeaa7, #ffc107); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 20px #ffc107, 0 0 40px rgba(255, 215, 0, 0.5); z-index: 5; border: 2px solid #fff8e1; }
 
-/* ANIMASI JARUM DIUBAH SUPAYA LEBIH SMOOTH */
 .qibla-needle { position: absolute; top: 50%; left: 50%; width: 4px; height: 90px; margin-left: -2px; margin-top: -90px; transform-origin: 50% 100%; z-index: 4; pointer-events: none; will-change: transform; transition: transform 0.2s linear; }
 .qibla-needle .needle-line { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 3px; height: 100%; background: linear-gradient(to top, #ffc107 0%, #fff8e1 50%, #ffc107 100%); border-radius: 3px; box-shadow: 0 0 12px #ffc107, 0 0 24px rgba(255, 215, 0, 0.6); }
 .qibla-needle .needle-arrow { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 26px; filter: drop-shadow(0 0 8px #ffc107) drop-shadow(0 0 16px rgba(255, 215, 0, 0.8)); line-height: 1; }
@@ -191,15 +191,194 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
 .blog-form .file-row input[type="file"] { background: #1e1e30; border-radius: 30px; padding: 8px; color: #ccc; border: 1px dashed #5a5a7a; flex: 1; min-width: 180px; }
 .blog-form button { background: linear-gradient(135deg, #b8860b, #daa520); border: none; color: #1f1408; font-weight: 700; font-size: 1rem; padding: 10px 30px; border-radius: 40px; cursor: pointer; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); transition: 0.2s; }
 .blog-form button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6); }
-.blog-posts { display: flex; flex-direction: column; gap: 20px; }
-.blog-post { background: #14141f; border-radius: 24px; padding: 20px; border: 1px solid #3a3a55; transition: 0.3s; animation: fadeIn 0.4s ease; }
-.blog-post:hover { border-color: #ffc107; box-shadow: 0 0 25px rgba(255,193,7,0.15); }
-.blog-post h4 { color: #ffd700; font-size: 1.4rem; margin-bottom: 8px; }
-.blog-post .post-meta { color: #8888aa; font-size: 0.8rem; margin-bottom: 12px; }
-.blog-post img { max-width: 100%; max-height: 300px; border-radius: 16px; margin: 10px 0; display: block; border: 1px solid #3a3a55; object-fit: cover; }
-.blog-post .post-content { color: #d0d0e0; font-size: 0.95rem; line-height: 1.7; white-space: pre-wrap; word-wrap: break-word; }
-.blog-post .delete-post { margin-top: 10px; background: #ff4444; border: none; color: white; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: 0.2s; }
-.blog-post .delete-post:hover { background: #ff0000; transform: scale(1.05); }
+
+/* ===== BLOG CARDS (seperti kartu game) ===== */
+.blog-cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    padding: 10px 0;
+}
+.blog-card {
+    background: rgba(255,250,240,0.85);
+    backdrop-filter: blur(8px);
+    border: 2px solid #ffd966;
+    border-radius: 32px;
+    padding: 24px 20px;
+    width: 280px;
+    max-width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    animation: floatSoft 7s infinite;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.blog-card:nth-child(2n) { animation-delay: 0.4s; }
+.blog-card:nth-child(3n) { animation-delay: 0.8s; }
+.blog-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #ffb347;
+    box-shadow: 0 20px 30px rgba(255,193,7,0.4);
+    animation-play-state: paused;
+}
+.blog-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #4a3200;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.blog-card-meta {
+    font-size: 0.75rem;
+    color: #8b6b3a;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.blog-card-excerpt {
+    font-size: 0.88rem;
+    color: #5e4a2e;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+}
+.blog-card-read {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #b8860b;
+    margin-top: 6px;
+    align-self: flex-end;
+}
+
+/* ===== BLOG MODAL ===== */
+.blog-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.blog-modal-content {
+    background: linear-gradient(145deg, #1e1e2f, #2a2a40);
+    border: 2px solid #ffc107;
+    border-radius: 32px;
+    padding: 32px 28px;
+    max-width: 720px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    color: #f0f0f0;
+}
+.blog-modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: #ff4444;
+    border: none;
+    color: white;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+.blog-modal-close:hover { background: #ff0000; transform: scale(1.1); }
+.blog-modal-title {
+    color: #ffd700;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    padding-right: 40px;
+}
+.blog-modal-meta {
+    color: #b0b0cc;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+}
+.blog-modal-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 16px;
+    margin: 12px 0;
+    border: 1px solid #3a3a55;
+    object-fit: cover;
+}
+.blog-modal-text {
+    color: #d0d0e0;
+    font-size: 1rem;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 24px;
+}
+.blog-modal-delete {
+    background: #ff4444;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: 0.2s;
+}
+.blog-modal-delete:hover { background: #ff0000; transform: scale(1.05); }
+
+/* ===== MASCOT CHOICE BUTTONS ===== */
+.mascot-choice-btn {
+    background: linear-gradient(135deg, #ffb347, #ff8c00);
+    border: none;
+    color: #1f1408;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 3px 10px rgba(255,193,7,0.4);
+}
+.mascot-choice-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 5px 15px rgba(255,193,7,0.7);
+}
+
+.blog-page-wrapper { max-width: 900px; margin: 20px auto 50px; padding: 10px 15px; width: 95%; box-sizing: border-box; }
+.blog-auth-section { background: linear-gradient(145deg, #1e1e2f, #2a2a40); border-radius: 32px; padding: 24px 24px 22px; border: 1.5px solid #ffc107; box-shadow: 0 12px 40px rgba(255, 193, 7, 0.15); margin-bottom: 24px; animation: borderPulse 5s infinite; position: relative; overflow: hidden; }
+.auth-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
+.auth-top h3 { color: #ffd700; font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.auth-status-pill { background: rgba(0,0,0,0.5); padding: 5px 16px; border-radius: 40px; border: 1px solid rgba(255,215,0,0.3); font-size: 0.75rem; font-weight: 600; color: #ffecb3; letter-spacing: 0.5px; transition: 0.3s; }
+.auth-tabs { display: flex; gap: 8px; margin-bottom: 16px; background: rgba(0,0,0,0.3); padding: 5px; border-radius: 40px; width: fit-content; }
+.auth-tab { background: transparent; border: none; color: #b0b0cc; font-size: 0.9rem; font-weight: 600; padding: 8px 22px; border-radius: 40px; cursor: pointer; transition: 0.2s; font-family: inherit; }
+.auth-tab.active { background: linear-gradient(135deg, #b8860b, #daa520); color: #1f1408; }
+.auth-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+.auth-form.hidden { display: none; }
+.auth-form input { width: 100%; padding: 12px 18px; border-radius: 30px; border: 1px solid #4a4a6a; background: #14141f; color: #eee; font-size: 0.95rem; font-family: inherit; outline: none; transition: 0.2s; }
+.auth-form input:focus { border-color: #ffc107; box-shadow: 0 0 15px rgba(255,193,7,0.3); }
+.auth-submit { background: linear-gradient(135deg, #b8860b, #daa520); border: none; color: #1f1408; font-weight: 800; font-size: 0.9rem; padding: 11px 26px; border-radius: 40px; cursor: pointer; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(255,193,7,0.4); transition: 0.2s; align-self: flex-start; font-family: inherit; }
+.auth-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,193,7,0.6); }
+.auth-message { font-size: 0.85rem; min-height: 20px; margin-top: 4px; color: #ffd966; }
+.auth-logged { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; }
+.auth-logged p { color: #d0d0e0; font-size: 0.95rem; }
+.auth-logout { background: #ff4444; border: none; color: white; padding: 8px 22px; border-radius: 40px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: 0.2s; font-family: inherit; }
+.auth-logout:hover { background: #ff0000; transform: scale(1.05); }
+.reader-note { background: rgba(255,193,7,0.08); border: 1px dashed #ffc107; border-radius: 20px; padding: 14px 20px; color: #ffecb3; font-size: 0.9rem; margin-bottom: 20px; text-align: center; }
 
 #game-page { max-width:1200px; margin:40px auto; padding:20px; background:transparent; min-height:60vh; width: 100%; box-sizing: border-box; }
 .game-header { display: flex; justify-content: space-between; align-items: center; padding:20px 30px; background: rgba(255,250,240,0.7); backdrop-filter:blur(10px); border-radius:80px; border:2px solid #ffc107; margin-bottom:40px; animation: floatUpDown 8s infinite, borderPulse 4s infinite; }
@@ -248,7 +427,7 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
 .percentage { font-size: 1.5rem; color: #FFD700; font-weight: bold; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); animation: percentagePulse 1s ease-in-out infinite; }
 @keyframes percentagePulse { 0%, 100% { opacity: 0.8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
 .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10001; }
-.particle { position: absolute; width: 10px; height: 10px; background: #FFD700; border-radius: 50%; opacity: 0.3; animation: float 8s infinite; }
+.particle { position: absolute; width: 100px; height: 10px; background: #FFD700; border-radius: 50%; opacity: 0.3; animation: float 8s infinite; }
 @keyframes float { 0% { transform: translateY(0) rotate(0deg); opacity: 0.3; } 50% { opacity: 0.6; } 100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
 .glow-effect { position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: radial-gradient(circle at center, rgba(255,215,0,0.1) 0%, transparent 70%); pointer-events: none; z-index: 10001; }
 .shine-effect { position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%); animation: shine 6s infinite; pointer-events: none; z-index: 10001; }
@@ -327,6 +506,177 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
 .tool-btn.active-tool { background: #6d5cce; border-color: #b4a6ff; }
 .paint-canvas { display: block; width: 100%; max-width: 800px; height: auto; background: white; cursor: crosshair; touch-action: none; border-radius: 14px; }
 
+/* ===== MASCOT CHATBOT CSS ===== */
+#mascot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: 'Poppins', sans-serif;
+}
+.mascot-img {
+    width: 110px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    animation: mascotWiggle 3s ease-in-out infinite;
+}
+@keyframes mascotWiggle {
+    0%, 100% { transform: rotate(0deg) translateY(0); }
+    20% { transform: rotate(-8deg) translateY(-5px); }
+    40% { transform: rotate(6deg) translateY(0); }
+    60% { transform: rotate(-5deg) translateY(-3px); }
+    80% { transform: rotate(3deg) translateY(0); }
+}
+.mascot-img:hover {
+    animation-play-state: paused;
+    transform: scale(1.15) rotate(4deg);
+}
+.mascot-img.clicked {
+    animation: mascotJump 0.5s ease;
+}
+@keyframes mascotJump {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-25px) scale(1.1); }
+    100% { transform: translateY(0) scale(1); }
+}
+.mascot-chat {
+    background: white;
+    border-radius: 22px 22px 4px 22px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+    width: 330px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border: 2px solid #ffc107;
+    transform-origin: bottom right;
+    animation: chatPopIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.mascot-chat.hidden {
+    display: none;
+}
+@keyframes chatPopIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.mascot-header {
+    background: linear-gradient(135deg, #ff9f43, #ff5252);
+    color: white;
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.mascot-header-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.mascot-badge {
+    background: rgba(255,255,255,0.25);
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+}
+.mascot-close-btn {
+    cursor: pointer;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+.mascot-close-btn:hover {
+    opacity: 1;
+}
+.mascot-message-area {
+    padding: 14px;
+    color: #2c3e50;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    max-height: 280px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fdfdfd;
+}
+.chat-msg {
+    max-width: 85%;
+    padding: 9px 13px;
+    border-radius: 16px;
+    font-size: 0.86rem;
+    word-break: break-word;
+    animation: fadeIn 0.25s ease;
+}
+.chat-msg.bot {
+    background: #fff8e7;
+    color: #4a3200;
+    border: 1px solid #ffe599;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+.chat-msg.user {
+    background: linear-gradient(135deg, #ff9f43, #ff793f);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 2px 6px rgba(255,121,63,0.3);
+}
+.chat-msg.typing {
+    font-style: italic;
+    color: #888;
+    background: #f1f1f1;
+    border: none;
+}
+.mascot-input-box {
+    display: flex;
+    gap: 6px;
+    padding: 10px;
+    background: #ffffff;
+    border-top: 1px solid #f0e0c0;
+}
+.mascot-input-box input {
+    flex: 1;
+    border: 1.5px solid #ffc107;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+.mascot-input-box input:focus {
+    border-color: #ff8c00;
+}
+.mascot-input-box input:disabled {
+    background: #f0f0f0;
+    cursor: not-allowed;
+}
+.mascot-send-btn {
+    background: linear-gradient(135deg, #ff9f43, #ff5252);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    transition: transform 0.2s;
+    box-shadow: 0 3px 8px rgba(255, 82, 82, 0.4);
+}
+.mascot-send-btn:hover {
+    transform: scale(1.08);
+}
+
 @media screen and (max-width: 700px) {
     header h1 { font-size: 36px; letter-spacing: 2px; }
     .motivation { font-size: 15px; padding: 8px 18px; }
@@ -359,15 +709,22 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
     .world-clock-section { padding: 16px 14px 14px; }
     .analog-mini { width: 32px; height: 32px; }
     .compass-container { width: 180px; height: 180px; }
+    .compass { --tick-r: 82px; }
     .qibla-deg-display { font-size: 2.2rem; }
     .qibla-body { gap: 16px; }
     .qibla-needle { height: 72px; margin-top: -72px; }
     .qibla-needle .needle-arrow { font-size: 22px; top: -12px; }
-    .compass-tick { transform-origin: 50% calc(50% + 80px); }
     .qibla-header h3 { font-size: 1.05rem; }
     .blog-header h3 { font-size: 1.1rem; }
     .blog-post h4 { font-size: 1.2rem; }
     .sr-btn { width: 50px; height: 50px; font-size: 22px; }
+    .auth-top h3 { font-size: 1.05rem; }
+    .auth-tab { font-size: 0.8rem; padding: 7px 16px; }
+    .auth-form input { font-size: 0.9rem; padding: 10px 14px; }
+    .auth-submit { font-size: 0.85rem; padding: 10px 22px; }
+    .mascot-img { width: 90px; }
+    .mascot-chat { width: 280px; }
+    .blog-card { width: 100%; max-width: 280px; }
 }
 
 @media screen and (max-width: 420px) {
@@ -380,12 +737,15 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
     .score-board { font-size: 16px; gap: 12px; }
     .menu-btn { font-size: 15px; padding: 10px 16px; min-width: 110px; }
     .compass-container { width: 150px; height: 150px; }
+    .compass { --tick-r: 68px; }
     .qibla-deg-display { font-size: 1.8rem; }
     .qibla-needle { height: 60px; margin-top: -60px; }
-    .compass-tick { transform-origin: 50% calc(50% + 66px); }
     .qibla-stat { font-size: 0.7rem; padding: 6px 12px; }
     .blog-form input, .blog-form textarea { font-size: 0.9rem; padding: 10px 12px; }
     .sr-btn { width: 45px; height: 45px; font-size: 20px; }
+    .auth-top h3 { font-size: 0.95rem; }
+    .mascot-img { width: 75px; }
+    .mascot-chat { width: 250px; }
 }
 </style>
 </head>
@@ -400,7 +760,7 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
             <div class="logo-3d"><div class="logo-ring"></div><div class="logo-ring"></div><div class="logo-ring"></div><div class="logo-ring"></div></div>
             <div class="glitch-text">LOADING<span>LOADING</span><span>LOADING</span></div>
             <div class="status-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-            <div class="progress-container"><div class="progress-track"><div class="progress-fill-advanced"></div></div></div>
+            <div class="progress-container"><div class="progress-track"><div class="progress-fill-advanced" id="loadingProgressFill"></div></div></div>
             <div class="digital-counter"><span id="counterValue">000</span>%<div class="counter-glitch"></div></div>
             <div class="loading-message" id="loadingMessage">INITIALIZING SYSTEM...</div>
         </div>
@@ -416,6 +776,7 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
             <button class="tab-btn active" id="tabPerkenalan">👤 PERKENALAN</button>
             <button class="tab-btn" id="tabInfo">ℹ️ INFO</button>
             <button class="tab-btn" id="tabGame">🎮 GAME</button>
+            <button class="tab-btn" id="tabBlog">📝 BLOG</button>
         </div>
     </header>
 
@@ -462,18 +823,18 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
                 <div class="qibla-body">
                     <div class="compass-container">
                         <div class="compass" id="compass">
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(0deg) translateY(-100px);"></div>
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(30deg) translateY(-100px);"></div>
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(60deg) translateY(-100px);"></div>
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(90deg) translateY(-100px);"></div>
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(120deg) translateY(-100px);"></div>
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(150deg) translateY(-100px);"></div>
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(180deg) translateY(-100px);"></div>
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(210deg) translateY(-100px);"></div>
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(240deg) translateY(-100px);"></div>
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(270deg) translateY(-100px);"></div>
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(300deg) translateY(-100px);"></div>
-                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(330deg) translateY(-100px);"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(0deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(30deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(60deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(90deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(120deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(150deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(180deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(210deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(240deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(270deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(300deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
+                            <div class="compass-tick" style="transform: translate(-50%,-50%) rotate(330deg) translateY(calc(-1 * var(--tick-r, 100px)));"></div>
                             <div class="compass-mark n">U</div>
                             <div class="compass-mark e">T</div>
                             <div class="compass-mark s">S</div>
@@ -499,41 +860,6 @@ footer { text-align:center; padding:30px 20px; background:rgba(255,250,240,0.7);
                 </div>
                 <div class="qibla-note">📿 Pastikan web dibuka lewat HTTPS dan izinkan akses sensor untuk fitur kompas real-time</div>
             </div>
-
-            <div class="blog-section">
-                <div class="blog-header"><h3><span>📝</span> Blogger Assyifa</h3></div>
-                <div class="blog-form">
-                    <label for="blogTitle">Judul Artikel</label>
-                    <input type="text" id="blogTitle" placeholder="Contoh: Assyifa Boarding School Raih Juara 1 Voli..." />
-                    <label for="blogImage">Foto (opsional)</label>
-                    <div class="file-row">
-                        <input type="file" id="blogImage" accept="image/*" />
-                        <span id="fileLabel" style="color:#8888aa;font-size:0.85rem;">Belum ada file</span>
-                    </div>
-                    <label for="blogContent">Isi Artikel</label>
-                    <textarea id="blogContent" placeholder="Tulis isi berita atau artikel di sini..."></textarea>
-                    <button id="addBlogBtn">➕ Tambah Artikel</button>
-                </div>
-                <div class="blog-posts" id="blogPostsContainer">
-                    <div class="blog-post" data-default="true">
-                        <h4>Assyifa Boarding School Raih Juara 1 Voli di Liga Pelajar Assyifa 2026</h4>
-                        <div class="post-meta">📅 18 Oktober 2026 · Tim Jurnalistik Assyifa Boarding School</div>
-                        <div class="post-content">Subang, 18 Oktober 2026 — Tim voli Assyifa Boarding School berhasil meraih juara 1 dalam ajang Liga Pelajar Assyifa yang diselenggarakan pada Minggu, 18 Oktober 2026, di GOR Assyifa, Wanareja.
-
-Prestasi ini menjadi kebanggaan bagi sekolah sekaligus bukti kerja keras, kekompakan, dan semangat juang para pemain selama mengikuti kompetisi. Dengan kerja sama tim yang solid dan strategi permainan yang baik, tim voli Assyifa Boarding School berhasil menunjukkan performa terbaiknya hingga meraih posisi tertinggi.
-
-Keberhasilan ini tidak terlepas dari peran pelatih yang telah membimbing dan mempersiapkan tim, serta dukungan dari pihak sekolah dan seluruh pendukung yang turut memberikan semangat kepada para pemain.
-
-Kemenangan tersebut diharapkan dapat menjadi motivasi bagi para siswa untuk terus mengembangkan bakat di bidang olahraga, meningkatkan kedisiplinan, dan menjunjung tinggi sportivitas dalam setiap pertandingan.
-
-Prestasi ini menjadi salah satu bukti bahwa Assyifa Boarding School tidak hanya mendorong siswa untuk berprestasi di bidang akademik, tetapi juga mendukung pengembangan kemampuan dan potensi siswa melalui kegiatan olahraga.
-
-Selamat kepada tim voli Assyifa Boarding School atas keberhasilannya meraih juara 1 di Liga Pelajar Assyifa 2026! Semoga prestasi ini menjadi awal dari pencapaian-pencapaian berikutnya.
-
-Penulis: Tim Jurnalistik Assyifa Boarding School</div>
-                    </div>
-                </div>
-            </div>
         </div>
         <footer><p>© 2026 · Figo Satya Hambali · Purwakarta</p></footer>
     </div>
@@ -549,12 +875,119 @@ Penulis: Tim Jurnalistik Assyifa Boarding School</div>
             </div>
         </div>
     </div>
+
+    <div id="blogPage" class="page-content hidden">
+        <div class="blog-page-wrapper">
+
+            <div class="blog-auth-section" id="blogAuthSection">
+                <div class="auth-top">
+                    <h3><span>🔐</span> Akses Blog</h3>
+                    <div class="auth-status-pill" id="authStatus">Belum masuk</div>
+                </div>
+                <div id="authNotLogged">
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" id="authTabLoginBtn">Login</button>
+                        <button class="auth-tab" id="authTabRegisterBtn">Buat Akun</button>
+                    </div>
+                    <div class="auth-form" id="authFormLogin">
+                        <input type="text" id="loginUsername" placeholder="Username" autocomplete="username">
+                        <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password">
+                        <button class="auth-submit" id="loginBtn">Masuk</button>
+                    </div>
+                    <div class="auth-form hidden" id="authFormRegister">
+                        <input type="text" id="regUsername" placeholder="Username baru" autocomplete="username">
+                        <input type="password" id="regPassword" placeholder="Password" autocomplete="new-password">
+                        <input type="password" id="regPassword2" placeholder="Ulangi Password" autocomplete="new-password">
+                        <button class="auth-submit" id="registerBtn">Daftar</button>
+                    </div>
+                    <div class="auth-message" id="authMessage"></div>
+                </div>
+                <div class="auth-logged" id="authLogged" style="display:none;">
+                    <p id="authWelcome">Selamat datang!</p>
+                    <button class="auth-logout" id="logoutBtn">Keluar</button>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <div class="blog-header"><h3><span>📝</span> Blogger Assyifa</h3></div>
+                <div class="reader-note" id="readerNote">ℹ️ Silakan login atau daftar sebagai pembaca. Hanya admin yang bisa menulis artikel.</div>
+                <div class="blog-form" id="blogForm">
+                    <label for="blogTitle">Judul Artikel</label>
+                    <input type="text" id="blogTitle" placeholder="Contoh: Assyifa Boarding School Raih Juara 1 Voli..." />
+                    <label for="blogImage">Foto (opsional)</label>
+                    <div class="file-row">
+                        <input type="file" id="blogImage" accept="image/*" />
+                        <span id="fileLabel" style="color:#8888aa;font-size:0.85rem;">Belum ada file</span>
+                    </div>
+                    <label for="blogContent">Isi Artikel</label>
+                    <textarea id="blogContent" placeholder="Tulis isi berita atau artikel di sini..."></textarea>
+                    <button id="addBlogBtn">➕ Tambah Artikel</button>
+                </div>
+                <div class="blog-cards-grid" id="blogCardsContainer">
+                    <!-- Default card akan diisi oleh JS -->
+                </div>
+            </div>
+        </div>
+        <footer><p>© 2026 · Figo Satya Hambali · Purwakarta</p></footer>
+    </div>
 </div>
+
+<!-- MODAL BLOG -->
+<div id="blogModal" class="blog-modal" style="display:none;">
+    <div class="blog-modal-content">
+        <button class="blog-modal-close" onclick="closeBlogModal()">✕</button>
+        <h2 id="blogModalTitle" class="blog-modal-title"></h2>
+        <div id="blogModalMeta" class="blog-modal-meta"></div>
+        <img id="blogModalImage" class="blog-modal-image" style="display:none;" alt="">
+        <div id="blogModalContent" class="blog-modal-text"></div>
+        <button id="blogModalDeleteBtn" class="blog-modal-delete" style="display:none;" onclick="deleteCurrentPost()">🗑️ Hapus Artikel</button>
+    </div>
+</div>
+
+<!-- Hidden default post content (untuk modal) -->
+<div id="defaultPostContent" style="display:none;">Subang, 18 Oktober 2026 — Tim voli Assyifa Boarding School berhasil meraih juara 1 dalam ajang Liga Pelajar Assyifa yang diselenggarakan pada Minggu, 18 Oktober 2026, di GOR Assyifa, Wanareja.
+
+Prestasi ini menjadi kebanggaan bagi sekolah sekaligus bukti kerja keras, kekompakan, dan semangat juang para pemain selama mengikuti kompetisi. Dengan kerja sama tim yang solid dan strategi permainan yang baik, tim voli Assyifa Boarding School berhasil menunjukkan performa terbaiknya hingga meraih posisi tertinggi.
+
+Keberhasilan ini tidak terlepas dari peran pelatih yang telah membimbing dan mempersiapkan tim, serta dukungan dari pihak sekolah dan seluruh pendukung yang turut memberikan semangat kepada para pemain.
+
+Kemenangan tersebut diharapkan dapat menjadi motivasi bagi para siswa untuk terus mengembangkan bakat di bidang olahraga, meningkatkan kedisiplinan, dan menjunjung tinggi sportivitas dalam setiap pertandingan.
+
+Prestasi ini menjadi salah satu bukti bahwa Assyifa Boarding School tidak hanya mendorong siswa untuk berprestasi di bidang akademik, tetapi juga mendukung pengembangan kemampuan dan potensi siswa melalui kegiatan olahraga.
+
+Selamat kepada tim voli Assyifa Boarding School atas keberhasilannya meraih juara 1 di Liga Pelajar Assyifa 2026! Semoga prestasi ini menjadi awal dari pencapaian-pencapaian berikutnya.
+
+Penulis: Tim Jurnalistik Assyifa Boarding School</div>
 
 <div id="gameFullscreen" class="game-fullscreen">
     <div class="game-fullscreen-header"><button class="close-fullscreen-btn" id="closeFullscreenBtn">✕</button></div>
     <div id="gameFullscreenContent" class="game-fullscreen-content"></div>
 </div>
+
+<!-- ================= MASCOT CHATBOT ================= -->
+<div id="mascot-container">
+    <div id="mascot-chat" class="mascot-chat hidden">
+        <div class="mascot-header">
+            <div class="mascot-header-title">
+                🦊 Rubah AI Bot <span class="mascot-badge">ONLINE</span>
+            </div>
+            <span class="mascot-close-btn" onclick="toggleMascot()">✕</span>
+        </div>
+        <div class="mascot-message-area" id="mascot-message-area">
+            <div class="chat-msg bot">Halo Tamu! 🦊 Apa kabar harimu?</div>
+            <div id="mascot-greeting-choices" style="display:flex; gap:10px; justify-content:center; margin-top:8px;">
+                <button class="mascot-choice-btn" onclick="handleMascotGreeting('baik')">😊 Baik</button>
+                <button class="mascot-choice-btn" onclick="handleMascotGreeting('kurang')">😔 Kurang Baik</button>
+            </div>
+        </div>
+        <div class="mascot-input-box">
+            <input type="text" id="mascot-user-input" placeholder="Pilih jawaban dulu..." onkeypress="handleMascotKeyPress(event)" disabled>
+            <button class="mascot-send-btn" onclick="sendMascotMessage()">➤</button>
+        </div>
+    </div>
+    <img src="Rubah Maskot.png" id="mascot-img" class="mascot-img" alt="Rubah Maskot AI" onclick="toggleMascot()" onerror="this.src='https://cdn-icons-png.flaticon.com/512/616/616430.png'">
+</div>
+<!-- ================================================== -->
 
 <script>
 (function() {
@@ -573,18 +1006,32 @@ if (orbs) for (var j=0; j<8; j++) { var o=document.createElement('div'); o.class
 var counter = 0;
 var counterEl = document.getElementById('counterValue');
 var msgEl = document.getElementById('loadingMessage');
+var progressFillEl = document.getElementById('loadingProgressFill');
 var msgs = ['INITIALIZING...','LOADING...','CONFIGURING...','CONNECTION...','OPTIMIZING...','ALMOST...','LAUNCHING...'];
-var counterInterval = setInterval(function() {
-    counter = (counter + 1) % 101;
-    if (counterEl) counterEl.textContent = ('00' + counter).slice(-3);
-    if (msgEl) msgEl.textContent = msgs[Math.floor((counter/100)*(msgs.length-1))];
-}, 60);
 
-setTimeout(function() {
+function finishLoading() {
     if (loadingScreen) loadingScreen.classList.add('hidden');
     if (mainContent) mainContent.style.display = 'block';
-    clearInterval(counterInterval);
-}, 6110);
+}
+
+var counterInterval = setInterval(function() {
+    counter++;
+    if (counter > 100) counter = 100;
+    if (counterEl) counterEl.textContent = ('00' + counter).slice(-3);
+    if (progressFillEl) progressFillEl.style.width = counter + '%';
+    if (msgEl) msgEl.textContent = msgs[Math.min(msgs.length - 1, Math.floor((counter / 100) * (msgs.length - 1)))];
+    if (counter >= 100) {
+        clearInterval(counterInterval);
+        counterInterval = null;
+        setTimeout(finishLoading, 400);
+    }
+}, 38);
+
+// Jaring pengaman
+setTimeout(function() {
+    if (counterInterval) { clearInterval(counterInterval); counterInterval = null; }
+    finishLoading();
+}, 9000);
 
 // ===== WORLD CLOCK =====
 function updateWorldClock() {
@@ -709,7 +1156,7 @@ function updateQibla(lat, lon, source) {
         var bearing = calculateQiblaBearing(lat, lon);
         var dist = haversine(lat, lon, KAABA_LAT, KAABA_LON);
         currentQiblaBearing = bearing;
-        
+
         if (qiblaDegEl) qiblaDegEl.innerHTML = bearing.toFixed(1) + '<span>°</span>';
         if (qiblaDistEl) qiblaDistEl.textContent = Math.round(dist).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
         if (qiblaLatEl) qiblaLatEl.textContent = lat.toFixed(3);
@@ -745,20 +1192,21 @@ function detectLocation(forceRefresh) {
     if (btnLocate) btnLocate.disabled = true;
     if (!forceRefresh) {
         var cached = loadLocationCache();
-        if (cached) { updateQibla(cached.lat, cached.lon, cached.source); return; }
+        if (cached) { updateQibla(cached.lat, cached.lon, cached.source); if (btnLocate) btnLocate.disabled = false; return; }
     }
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
-            function(pos) { updateQibla(pos.coords.latitude, pos.coords.longitude, 'gps'); saveLocationCache(pos.coords.latitude, pos.coords.longitude, 'gps'); },
-            function() { 
+            function(pos) { updateQibla(pos.coords.latitude, pos.coords.longitude, 'gps'); saveLocationCache(pos.coords.latitude, pos.coords.longitude, 'gps'); if (btnLocate) btnLocate.disabled = false; },
+            function() {
                 getLocationByIP().then(function(ip) {
                     if (ip) { updateQibla(ip.lat, ip.lon, 'ip'); saveLocationCache(ip.lat, ip.lon, 'ip'); }
                     else { updateQibla(DEFAULT_LAT, DEFAULT_LON, 'default'); }
+                    if (btnLocate) btnLocate.disabled = false;
                 });
             },
             { enableHighAccuracy: true, timeout: 6000 }
         );
-    } else { updateQibla(DEFAULT_LAT, DEFAULT_LON, 'default'); }
+    } else { updateQibla(DEFAULT_LAT, DEFAULT_LON, 'default'); if (btnLocate) btnLocate.disabled = false; }
 }
 
 function saveLocationCache(lat, lon, src) { try { localStorage.setItem('qibla_c', JSON.stringify({ lat: lat, lon: lon, source: src, ts: Date.now() })); } catch(_) {} }
@@ -801,13 +1249,15 @@ if (btnLocate) btnLocate.addEventListener('click', function() { detectLocation(t
 var tabPerkenalan = document.getElementById('tabPerkenalan');
 var tabInfo = document.getElementById('tabInfo');
 var tabGame = document.getElementById('tabGame');
+var tabBlog = document.getElementById('tabBlog');
 var pagePerkenalan = document.getElementById('perkenalanPage');
 var pageInfo = document.getElementById('infoPage');
 var pageGame = document.getElementById('gamePage');
+var pageBlog = document.getElementById('blogPage');
 
 function setActiveTab(active) {
-    [pagePerkenalan, pageInfo, pageGame].forEach(function(p) { if (p) p.classList.add('hidden'); });
-    [tabPerkenalan, tabInfo, tabGame].forEach(function(t) { if (t) t.classList.remove('active'); });
+    [pagePerkenalan, pageInfo, pageGame, pageBlog].forEach(function(p) { if (p) p.classList.add('hidden'); });
+    [tabPerkenalan, tabInfo, tabGame, tabBlog].forEach(function(t) { if (t) t.classList.remove('active'); });
 
     if (active === 'perkenalan' && pagePerkenalan) {
         pagePerkenalan.classList.remove('hidden');
@@ -819,45 +1269,360 @@ function setActiveTab(active) {
     } else if (active === 'game' && pageGame) {
         pageGame.classList.remove('hidden');
         if (tabGame) tabGame.classList.add('active');
+    } else if (active === 'blog' && pageBlog) {
+        pageBlog.classList.remove('hidden');
+        if (tabBlog) tabBlog.classList.add('active');
+        if (typeof updateAuthUI === 'function') updateAuthUI();
     }
 }
 if (tabPerkenalan) tabPerkenalan.addEventListener('click', function() { setActiveTab('perkenalan'); });
 if (tabInfo) tabInfo.addEventListener('click', function() { setActiveTab('info'); });
 if (tabGame) tabGame.addEventListener('click', function() { setActiveTab('game'); });
+if (tabBlog) tabBlog.addEventListener('click', function() { setActiveTab('blog'); });
 setActiveTab('perkenalan');
 
-// ===== BLOG =====
+// ===== BLOG AUTH + POST =====
+var ADMIN_USER = 'figos';
+var ADMIN_PASS = 'zeego.pw';
+
+var currentUser = null;
+var authMessageEl = document.getElementById('authMessage');
+var authStatusEl = document.getElementById('authStatus');
+var authNotLogged = document.getElementById('authNotLogged');
+var authLogged = document.getElementById('authLogged');
+var authWelcome = document.getElementById('authWelcome');
+
+function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function(c) {
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+}
+function loadUsers() { try { var raw = localStorage.getItem('blog_users'); return raw ? JSON.parse(raw) : {}; } catch(_) { return {}; } }
+function saveUsers(users) { try { localStorage.setItem('blog_users', JSON.stringify(users)); } catch(_) {} }
+function loadSession() {
+    try {
+        var raw = localStorage.getItem('blog_session');
+        if (!raw) return null;
+        var s = JSON.parse(raw);
+        if (s && s.username) {
+            if (s.username === ADMIN_USER) return { username: s.username, isAdmin: true };
+            var users = loadUsers();
+            if (users[s.username]) return { username: s.username, isAdmin: false };
+        }
+    } catch(_) {}
+    return null;
+}
+function saveSession(user) { try { localStorage.setItem('blog_session', JSON.stringify({ username: user.username })); } catch(_) {} }
+function clearSession() { try { localStorage.removeItem('blog_session'); } catch(_) {} }
+
+function showAuthMessage(msg, type) {
+    if (!authMessageEl) return;
+    authMessageEl.textContent = msg;
+    authMessageEl.style.color = type === 'error' ? '#ff7a7a' : type === 'success' ? '#7aff9a' : '#ffd966';
+}
+
+function updateBlogFormVisibility() {
+    var isAdmin = currentUser && currentUser.isAdmin;
+    var blogFormEl = document.getElementById('blogForm');
+    var readerNote = document.getElementById('readerNote');
+    if (blogFormEl) blogFormEl.style.display = isAdmin ? 'block' : 'none';
+    if (readerNote) {
+        readerNote.style.display = isAdmin ? 'none' : 'block';
+        if (currentUser) readerNote.textContent = 'ℹ️ Kamu masuk sebagai pembaca. Hanya admin yang bisa menulis artikel baru.';
+        else readerNote.textContent = 'ℹ️ Silakan login atau daftar sebagai pembaca. Hanya admin yang bisa menulis artikel.';
+    }
+    // Delete button in modal visibility is handled when opening modal
+}
+
+function updateAuthUI() {
+    if (currentUser) {
+        if (authNotLogged) authNotLogged.style.display = 'none';
+        if (authLogged) authLogged.style.display = 'flex';
+        if (authWelcome) authWelcome.innerHTML = '👋 Masuk sebagai <b>' + escapeHtml(currentUser.username) + '</b>' + (currentUser.isAdmin ? ' <span style="color:#ffd700;">(Admin)</span>' : ' <span style="color:#aaa;">(Pembaca)</span>');
+        if (authStatusEl) {
+            authStatusEl.textContent = currentUser.isAdmin ? 'Admin ✓' : 'Pembaca ✓';
+            authStatusEl.style.borderColor = '#7aff9a';
+            authStatusEl.style.color = '#7aff9a';
+        }
+    } else {
+        if (authNotLogged) authNotLogged.style.display = 'block';
+        if (authLogged) authLogged.style.display = 'none';
+        if (authStatusEl) { authStatusEl.textContent = 'Belum masuk'; authStatusEl.style.borderColor = ''; authStatusEl.style.color = ''; }
+    }
+    updateBlogFormVisibility();
+}
+
+function doLogin() {
+    var uEl = document.getElementById('loginUsername');
+    var pEl = document.getElementById('loginPassword');
+    var u = (uEl ? uEl.value : '').trim();
+    var p = (pEl ? pEl.value : '');
+    if (!u || !p) { showAuthMessage('Isi username dan password!', 'error'); return; }
+    if (u === ADMIN_USER && p === ADMIN_PASS) {
+        currentUser = { username: u, isAdmin: true };
+        saveSession(currentUser);
+        showAuthMessage('Berhasil masuk sebagai admin!', 'success');
+        if (pEl) pEl.value = '';
+        updateAuthUI();
+        return;
+    }
+    var users = loadUsers();
+    if (users[u] && users[u].password === p) {
+        currentUser = { username: u, isAdmin: false };
+        saveSession(currentUser);
+        showAuthMessage('Berhasil masuk!', 'success');
+        if (pEl) pEl.value = '';
+        updateAuthUI();
+        return;
+    }
+    showAuthMessage('Username atau password salah!', 'error');
+}
+
+function doRegister() {
+    var uEl = document.getElementById('regUsername');
+    var pEl = document.getElementById('regPassword');
+    var p2El = document.getElementById('regPassword2');
+    var u = (uEl ? uEl.value : '').trim();
+    var p = (pEl ? pEl.value : '');
+    var p2 = (p2El ? p2El.value : '');
+    if (!u || !p) { showAuthMessage('Isi semua kolom!', 'error'); return; }
+    if (p !== p2) { showAuthMessage('Password tidak sama!', 'error'); return; }
+    if (u.length < 3) { showAuthMessage('Username minimal 3 karakter!', 'error'); return; }
+    if (p.length < 4) { showAuthMessage('Password minimal 4 karakter!', 'error'); return; }
+    if (u === ADMIN_USER) { showAuthMessage('Username tidak tersedia!', 'error'); return; }
+    var users = loadUsers();
+    if (users[u]) { showAuthMessage('Username sudah terdaftar!', 'error'); return; }
+    users[u] = { password: p, created: Date.now() };
+    saveUsers(users);
+    currentUser = { username: u, isAdmin: false };
+    saveSession(currentUser);
+    showAuthMessage('Akun berhasil dibuat!', 'success');
+    if (uEl) uEl.value = '';
+    if (pEl) pEl.value = '';
+    if (p2El) p2El.value = '';
+    updateAuthUI();
+}
+
+function doLogout() {
+    currentUser = null;
+    clearSession();
+    showAuthMessage('Berhasil keluar.', 'info');
+    updateAuthUI();
+}
+
+(function bindAuth() {
+    var tabL = document.getElementById('authTabLoginBtn');
+    var tabR = document.getElementById('authTabRegisterBtn');
+    var fL = document.getElementById('authFormLogin');
+    var fR = document.getElementById('authFormRegister');
+    if (tabL) tabL.addEventListener('click', function() {
+        tabL.classList.add('active'); if (tabR) tabR.classList.remove('active');
+        if (fL) fL.classList.remove('hidden'); if (fR) fR.classList.add('hidden');
+        showAuthMessage('', 'info');
+    });
+    if (tabR) tabR.addEventListener('click', function() {
+        tabR.classList.add('active'); if (tabL) tabL.classList.remove('active');
+        if (fR) fR.classList.remove('hidden'); if (fL) fL.classList.add('hidden');
+        showAuthMessage('', 'info');
+    });
+    var loginBtn = document.getElementById('loginBtn');
+    var registerBtn = document.getElementById('registerBtn');
+    var logoutBtn = document.getElementById('logoutBtn');
+    if (loginBtn) loginBtn.addEventListener('click', doLogin);
+    if (registerBtn) registerBtn.addEventListener('click', doRegister);
+    if (logoutBtn) logoutBtn.addEventListener('click', doLogout);
+    var lp = document.getElementById('loginPassword');
+    if (lp) lp.addEventListener('keypress', function(e){ if (e.key === 'Enter') doLogin(); });
+    var rp2 = document.getElementById('regPassword2');
+    if (rp2) rp2.addEventListener('keypress', function(e){ if (e.key === 'Enter') doRegister(); });
+})();
+
+// ===== BLOG POSTS =====
 var blogTitle = document.getElementById('blogTitle');
 var blogImage = document.getElementById('blogImage');
 var blogContent = document.getElementById('blogContent');
 var addBlogBtn = document.getElementById('addBlogBtn');
-var blogPostsContainer = document.getElementById('blogPostsContainer');
+var blogCardsContainer = document.getElementById('blogCardsContainer');
 var fileLabel = document.getElementById('fileLabel');
+
+// Variabel untuk modal
+var currentModalPostId = null;
+var currentModalIsDefault = false;
+var blogModal = document.getElementById('blogModal');
+
+function loadSavedPosts() { try { var raw = localStorage.getItem('blog_posts'); return raw ? JSON.parse(raw) : []; } catch(_) { return []; } }
+function savePosts(posts) { try { localStorage.setItem('blog_posts', JSON.stringify(posts)); } catch(_) { alert('Gagal menyimpan (penyimpanan penuh).'); } }
+
+function createBlogCard(post, isDefault) {
+    var card = document.createElement('div');
+    card.className = 'blog-card';
+    if (isDefault) {
+        card.dataset.default = 'true';
+        card.onclick = function() { openBlogModal('default'); };
+    } else {
+        card.dataset.postId = post.id;
+        card.onclick = function() { openBlogModal(post.id); };
+    }
+    var title = document.createElement('div');
+    title.className = 'blog-card-title';
+    title.textContent = post.title;
+    card.appendChild(title);
+
+    var meta = document.createElement('div');
+    meta.className = 'blog-card-meta';
+    meta.textContent = post.meta;
+    card.appendChild(meta);
+
+    var excerpt = document.createElement('div');
+    excerpt.className = 'blog-card-excerpt';
+    // Ambil 120 karakter pertama, hilangkan newline
+    var plain = post.content.replace(/\n/g, ' ').substring(0, 120);
+    excerpt.textContent = plain + (post.content.length > 120 ? '…' : '');
+    card.appendChild(excerpt);
+
+    var readMore = document.createElement('span');
+    readMore.className = 'blog-card-read';
+    readMore.textContent = 'Baca Selengkapnya →';
+    card.appendChild(readMore);
+
+    return card;
+}
+
+function renderDefaultCard() {
+    var defaultPost = {
+        title: 'Assyifa Boarding School Raih Juara 1 Voli di Liga Pelajar Assyifa 2026',
+        meta: '📅 18 Oktober 2026 · Tim Jurnalistik Assyifa Boarding School',
+        content: document.getElementById('defaultPostContent').textContent
+    };
+    var card = createBlogCard(defaultPost, true);
+    blogCardsContainer.appendChild(card);
+}
+
+function renderSavedCards() {
+    var posts = loadSavedPosts();
+    // Render dari yang terbaru (prepend)
+    for (var i = posts.length - 1; i >= 0; i--) {
+        var card = createBlogCard(posts[i], false);
+        blogCardsContainer.prepend(card);
+    }
+}
+
+function openBlogModal(postId) {
+    var titleEl = document.getElementById('blogModalTitle');
+    var metaEl = document.getElementById('blogModalMeta');
+    var imgEl = document.getElementById('blogModalImage');
+    var contentEl = document.getElementById('blogModalContent');
+    var delBtn = document.getElementById('blogModalDeleteBtn');
+
+    if (postId === 'default') {
+        var defaultContent = document.getElementById('defaultPostContent').textContent;
+        titleEl.textContent = 'Assyifa Boarding School Raih Juara 1 Voli di Liga Pelajar Assyifa 2026';
+        metaEl.textContent = '📅 18 Oktober 2026 · Tim Jurnalistik Assyifa Boarding School';
+        imgEl.style.display = 'none';
+        imgEl.src = '';
+        contentEl.textContent = defaultContent;
+        currentModalPostId = null;
+        currentModalIsDefault = true;
+        delBtn.style.display = 'none';
+    } else {
+        var posts = loadSavedPosts();
+        var post = posts.find(function(p) { return p.id === postId; });
+        if (!post) return;
+        titleEl.textContent = post.title;
+        metaEl.textContent = post.meta;
+        if (post.image) {
+            imgEl.src = post.image;
+            imgEl.style.display = 'block';
+        } else {
+            imgEl.style.display = 'none';
+            imgEl.src = '';
+        }
+        contentEl.textContent = post.content;
+        currentModalPostId = post.id;
+        currentModalIsDefault = false;
+        if (currentUser && currentUser.isAdmin) {
+            delBtn.style.display = 'inline-block';
+        } else {
+            delBtn.style.display = 'none';
+        }
+    }
+    blogModal.style.display = 'flex';
+}
+
+window.closeBlogModal = function() {
+    blogModal.style.display = 'none';
+    currentModalPostId = null;
+    currentModalIsDefault = false;
+};
+
+window.deleteCurrentPost = function() {
+    if (!currentUser || !currentUser.isAdmin) { alert('Hanya admin yang bisa menghapus artikel!'); return; }
+    if (currentModalIsDefault) { alert('Artikel default tidak bisa dihapus.'); return; }
+    if (!currentModalPostId) return;
+    if (!confirm('Hapus artikel ini?')) return;
+    var posts = loadSavedPosts().filter(function(p) { return p.id !== currentModalPostId; });
+    savePosts(posts);
+    // Hapus card dari DOM
+    var card = blogCardsContainer.querySelector('[data-post-id="' + currentModalPostId + '"]');
+    if (card) card.remove();
+    closeBlogModal();
+};
+
+// Inisialisasi render
+renderDefaultCard();
+renderSavedCards();
 
 if (blogImage) blogImage.addEventListener('change', function() {
     if (fileLabel) fileLabel.textContent = blogImage.files.length ? blogImage.files[0].name : 'Belum ada file';
 });
+
+function fileToDataURL(file, cb) {
+    var reader = new FileReader();
+    reader.onload = function(e) { cb(e.target.result); };
+    reader.onerror = function() { cb(null); };
+    reader.readAsDataURL(file);
+}
+
 if (addBlogBtn) addBlogBtn.addEventListener('click', function() {
-    var title = blogTitle.value.trim();
-    var content = blogContent.value.trim();
+    if (!currentUser || !currentUser.isAdmin) { alert('Hanya admin yang bisa menulis artikel!'); return; }
+    var title = (blogTitle ? blogTitle.value : '').trim();
+    var content = (blogContent ? blogContent.value : '').trim();
     if (!title || !content) { alert('Judul dan isi harus diisi!'); return; }
-    var postDiv = document.createElement('div');
-    postDiv.className = 'blog-post';
-    var h4 = document.createElement('h4'); h4.textContent = title; postDiv.appendChild(h4);
-    var meta = document.createElement('div'); meta.className = 'post-meta';
     var now = new Date();
-    meta.textContent = '📅 ' + now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' }) + ' · ' + now.toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit' });
-    postDiv.appendChild(meta);
-    if (blogImage.files && blogImage.files[0]) {
-        var img = document.createElement('img'); img.src = URL.createObjectURL(blogImage.files[0]); img.alt = title; postDiv.appendChild(img);
+    var post = {
+        id: 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8),
+        title: title,
+        content: content,
+        meta: '📅 ' + now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + ' · ' + now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' · ✍️ ' + currentUser.username,
+        image: null
+    };
+    function finalize() {
+        var posts = loadSavedPosts();
+        posts.unshift(post);
+        savePosts(posts);
+        var card = createBlogCard(post, false);
+        blogCardsContainer.prepend(card);
+        if (blogTitle) blogTitle.value = '';
+        if (blogImage) blogImage.value = '';
+        if (blogContent) blogContent.value = '';
+        if (fileLabel) fileLabel.textContent = 'Belum ada file';
+        updateBlogFormVisibility();
     }
-    var p = document.createElement('div'); p.className = 'post-content'; p.textContent = content; postDiv.appendChild(p);
-    var delBtn = document.createElement('button'); delBtn.className = 'delete-post'; delBtn.textContent = '🗑️ Hapus';
-    delBtn.addEventListener('click', function() { if (confirm('Hapus artikel ini?')) postDiv.remove(); });
-    postDiv.appendChild(delBtn);
-    blogPostsContainer.prepend(postDiv);
-    blogTitle.value = ''; blogImage.value = ''; blogContent.value = ''; if (fileLabel) fileLabel.textContent = 'Belum ada file';
+    if (blogImage && blogImage.files && blogImage.files[0]) {
+        if (blogImage.files[0].size > 800 * 1024) {
+            if (!confirm('Gambar lebih dari 800KB, mungkin gagal disimpan. Lanjutkan?')) return;
+        }
+        fileToDataURL(blogImage.files[0], function(dataUrl) {
+            if (dataUrl) post.image = dataUrl;
+            finalize();
+        });
+    } else {
+        finalize();
+    }
 });
+
+currentUser = loadSession();
+updateAuthUI();
 
 // ===== FULLSCREEN GAME =====
 var gameFullscreen = document.getElementById('gameFullscreen');
@@ -1227,6 +1992,189 @@ if(closeFullscreenBtn) closeFullscreenBtn.addEventListener('click',function() {
     if(gameFullscreen) gameFullscreen.classList.remove('active');
     if(gameFullscreenContent) gameFullscreenContent.innerHTML='';
 });
+
+// ===== MASCOT CHATBOT LOGIC (RUBAH AI CHATBOT) =====
+var mascotGreeted = false;
+
+window.toggleMascot = function() {
+    var chat = document.getElementById('mascot-chat');
+    var img = document.getElementById('mascot-img');
+    if (!chat || !img) return;
+
+    img.classList.add('clicked');
+    setTimeout(function() { img.classList.remove('clicked'); }, 500);
+
+    if (chat.classList.contains('hidden')) {
+        chat.classList.remove('hidden');
+        var input = document.getElementById('mascot-user-input');
+        if (input && mascotGreeted) setTimeout(function(){ input.focus(); }, 300);
+    } else {
+        chat.classList.add('hidden');
+    }
+};
+
+window.handleMascotKeyPress = function(e) {
+    if (e.key === 'Enter') {
+        sendMascotMessage();
+    }
+};
+
+window.handleMascotGreeting = function(mood) {
+    if (mascotGreeted) return;
+    mascotGreeted = true;
+
+    // Hapus pilihan
+    var choices = document.getElementById('mascot-greeting-choices');
+    if (choices) choices.remove();
+
+    var area = document.getElementById('mascot-message-area');
+    if (!area) return;
+
+    // Tampilkan pilihan user
+    var userMsg = document.createElement('div');
+    userMsg.className = 'chat-msg user';
+    userMsg.textContent = mood === 'baik' ? 'Baik' : 'Kurang Baik';
+    area.appendChild(userMsg);
+    area.scrollTop = area.scrollHeight;
+
+    // Typing indicator
+    var typing = document.createElement('div');
+    typing.className = 'chat-msg bot typing';
+    typing.textContent = '🦊 Rubah AI sedang menyiapkan kata-kata...';
+    area.appendChild(typing);
+    area.scrollTop = area.scrollHeight;
+
+    setTimeout(function() {
+        typing.remove();
+        var reply = '';
+        if (mood === 'baik') {
+            reply = 'Alhamdulillah! Senang mendengarnya 😊. <br><br><b>Kata hari ini:</b> <i>"Jangan lupa bersyukur dan tetap semangat, karena hari ini adalah kesempatan baru untuk menjadi lebih baik."</i> — Figo Satya';
+        } else {
+            reply = 'Semangat ya! 😊 Setiap hari pasti ada tantangan. <br><br><b>Kata hari ini:</b> <i>"Dunia itu luas, tapi jika kau tidak menemukan orang baik, jadilah salah satunya."</i> — Figo Satya';
+        }
+        var botMsg = document.createElement('div');
+        botMsg.className = 'chat-msg bot';
+        botMsg.innerHTML = reply;
+        area.appendChild(botMsg);
+        area.scrollTop = area.scrollHeight;
+
+        // Aktifkan input
+        var input = document.getElementById('mascot-user-input');
+        if (input) {
+            input.disabled = false;
+            input.placeholder = 'Ketik pertanyaanmu...';
+            input.focus();
+        }
+    }, 800);
+};
+
+window.sendMascotMessage = function() {
+    if (!mascotGreeted) return; // safety
+    var input = document.getElementById('mascot-user-input');
+    var area = document.getElementById('mascot-message-area');
+    if (!input || !area) return;
+
+    var text = input.value.trim();
+    if (!text) return;
+
+    var userMsgDiv = document.createElement('div');
+    userMsgDiv.className = 'chat-msg user';
+    userMsgDiv.textContent = text;
+    area.appendChild(userMsgDiv);
+    input.value = '';
+
+    area.scrollTop = area.scrollHeight;
+
+    var typingDiv = document.createElement('div');
+    typingDiv.className = 'chat-msg bot typing';
+    typingDiv.innerHTML = '🦊 Rubah AI sedang berpikir...';
+    area.appendChild(typingDiv);
+    area.scrollTop = area.scrollHeight;
+
+    setTimeout(function() {
+        typingDiv.remove();
+        var replyText = generateAIResponse(text);
+
+        var botMsgDiv = document.createElement('div');
+        botMsgDiv.className = 'chat-msg bot';
+        botMsgDiv.innerHTML = replyText;
+        area.appendChild(botMsgDiv);
+        area.scrollTop = area.scrollHeight;
+    }, 600 + Math.random() * 500);
+};
+
+function generateAIResponse(query) {
+    var q = query.toLowerCase();
+
+    // ===== TENTANG FIGO =====
+    if (q.includes('figo') || q.includes('siapa yang buat') || q.includes('pembuat') || q.includes('pemilik')) {
+        return "Website ini dibuat oleh <b>Figo Satya Hambali</b> (atau sering dipanggil Figo / Virgo)! Figo adalah pemuda keren dari Purwakarta yang jago bikin web, menggambar, renang, dan main voli! 🦊✨";
+    }
+    if (q.includes('hobi') || q.includes('kesukaan')) {
+        return "Hobi Figo itu gambar, renang, dan main voli! Keren kan? 🎨🏊‍♂️🏐";
+    }
+    if (q.includes('asal') || q.includes('tinggal') || q.includes('rumah')) {
+        return "Figo berasal dari Purwakarta, Jawa Barat, Indonesia 🇮🇩!";
+    }
+    if (q.includes('kontak') || q.includes('ig') || q.includes('instagram') || q.includes('wa') || q.includes('whatsapp') || q.includes('tiktok') || q.includes('email')) {
+        return "Kamu bisa hubungi Figo via:<br>📷 IG: @user49508<br>🎵 TikTok: @fa3g0<br>📞 WA: +62 877-2084-4141<br>📧 Email: figo.satya7@smp.belajar.id";
+    }
+
+    // ===== FITUR WEB & GAME =====
+    if (q.includes('game') || q.includes('main') || q.includes('arcade') || q.includes('play')) {
+        return "Ada 4 game seru di <b>FIGO ARCADE</b>:<br>1. 🏐 <b>VollyPro</b>: Voli 2D lawan Bot/Teman<br>2. 🚀 <b>SpaceRunner</b>: Hindari asteroid luar angkasa<br>3. 🔢 <b>Tebak Angka</b>: Asah otak tebak 1-100<br>4. 🎨 <b>Canvas Paint</b>: Lukis digital kreatif!<br>Klik tab 🎮 <b>GAME</b> untuk main!";
+    }
+    if (q.includes('kiblat') || q.includes('sholat') || q.includes('qibla')) {
+        return "Di tab ℹ️ <b>INFO</b>, ada fitur <b>Arah Kiblat</b> otomatis dengan sensor kompas dan perhitungan jarak langsung ke Ka'bah! 🕋";
+    }
+    if (q.includes('jam') || q.includes('waktu') || q.includes('clock') || q.includes('dunia')) {
+        return "Fitur <b>World Clock</b> di tab ℹ️ <b>INFO</b> menampilkan waktu realtime dari berbagai kota dunia seperti Jakarta, London, Tokyo, New York, dll! 🌍⏰";
+    }
+    if (q.includes('blog') || q.includes('artikel') || q.includes('berita')) {
+        return "Tab 📝 <b>BLOG</b> memuat berita dan artikel menarik! Pembaca bisa daftar/login untuk membaca artikel terbaru.";
+    }
+
+    // ===== SALAM & PERKENALAN AI =====
+    if (q.includes('halo') || q.includes('hai') || q.includes('hi') || q.includes('pagi') || q.includes('siang') || q.includes('sore') || q.includes('malam')) {
+        return "Halo tamu manis! 🦊 Ada yang bisa Rubah AI bantu hari ini?";
+    }
+    if (q.includes('siapa kamu') || q.includes('namamu') || q.includes('nama kamu')) {
+        return "Aku adalah <b>Rubah AI</b>, maskot pintar berjaket maskulin pendamping setia Figo Satya Hambali! 🦊🔥";
+    }
+    if (q.includes('kabar') || q.includes('apa kabar')) {
+        return "Kabarku luar biasa semangat! 🦊 Semoga harimu juga menyenangkan dan makin sukses ya!";
+    }
+    if (q.includes('makasih') || q.includes('terima kasih') || q.includes('thanks')) {
+        return "Sama-sama! Dengan senang hati bantu kamu! 🦊 senyum manis~";
+    }
+
+    // ===== MOTIVASI & HUMOR =====
+    if (q.includes('semangat') || q.includes('motivasi') || q.includes('bijak') || q.includes('kata')) {
+        return "💡 <i>\"Dunia itu luas, tapi jika kau tidak menemukan orang baik, jadilah salah satunya.\"</i> — kata-kata indah dari Figo! 🔥";
+    }
+    if (q.includes('lucu') || q.includes('lelucon') || q.includes('joke') || q.includes('tebak-tebakan')) {
+        return "🦊 <b>Tebak-tebakan Rubah:</b> Kenapa ayam kalau berkokok matanya merem?<br>Jawab: Soalnya udah hafal teksnya! 😆 hahaha~";
+    }
+
+    // ===== MATEMATIKA SEDERHANA =====
+    if (q.match(/^\d+\s*[+\-*\/]\s*\d+$/)) {
+        try {
+            var res = eval(q);
+            return "🦊 Hasil perhitungannya adalah: <b>" + res + "</b> ! Gampang kan?";
+        } catch(e) {}
+    }
+
+    // ===== JAWABAN DEFAULT =====
+    var defaultReplies = [
+        "Pertanyaan menarik! 🦊 Sebagai Rubah AI pintar, aku menyarankan kamu menjelajahi tab <b>PERKENALAN</b>, <b>INFO</b>, <b>GAME</b>, dan <b>BLOG</b> di web ini ya!",
+        "Wah unik banget pertanyaannya! 🦊 Aku Rubah AI selalu siap menemani harimu di web Figo Satya! Coba tanya hal lain seputar Figo atau game di sini!",
+        "Mantap! 🦊 Aku mencatat pertanyaanmu. Coba cek game VollyPro atau SpaceRunner di tab 🎮 GAME, dijamin seru banget!",
+        "Rubah AI mendengarkan! 🦊 Ada lagi yang ingin kamu tanyakan tentang Figo, arah kiblat, world clock, atau game?"
+    ];
+
+    return defaultReplies[Math.floor(Math.random() * defaultReplies.length)];
+}
+
 })();
 </script>
 </body>
